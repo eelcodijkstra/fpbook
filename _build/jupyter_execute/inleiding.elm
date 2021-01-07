@@ -96,4 +96,5 @@ main =
 functies-1
 lijsten-1
 lijsten-2
+functies-2
 ```

@@ -100,6 +100,10 @@ sqr = \x -> x * x
 
 ```
 
+## Voorbeeld: bulletlist
+
+We hebben eerder het onderstaande programma gezien, als voorbeeld van het benutten van functies in de context van HTML.
+
 import Html exposing (div, ul, li, text)
 import Html.Attributes exposing (style)
 import List exposing (map)
@@ -114,3 +118,32 @@ main =
   ]
   
 -- compile-code
+
+Op basis van de bovenstaande uitleg over functies is de functie `bulletlist` al wat beter te begrijpen: 
+
+```
+bulletlist attrs lst =
+  ul attrs (map (\elt -> li [] [text elt]) lst)
+```
+
+* dit is de definitie van een functie met twee parameters, `attrs` en `lst`.
+* `ul attrs (...)` is de aanroep van de functie `ul` met twee parameters
+* `map (...) lst` is de aanroep van een functie met twee parameters,
+* waarvan de eerste parameter een *anonieme functie* is:
+* `\elt -> li [] [text elt]`
+* hierin is `li [] [...]` weer de aanroep van een functie met 2 parameters.
+* de functies `ul` en `li` zijn Elm-functies die overeenkomen met de HTML-tags `<ul>` en `<li>`
+
+In het volgende hoofdstuk behandelen we de functie `map f lst`: het resultaat is een lijst waarin `f` toegepast is op elm element van de oorspronkelijke lijst.
+
+```
+  map double [1,3,5] == [double 1, double 3, double 5] == [2, 6, 10]
+```
+
+Ga na dat je met het gebruik van `map` in het HTML-voorbeeld een lijst-element (`li`) maakt voor elk element van de lijst `lst`.
+
+We hebben bij deze functie `bulletlist` nog geen typering gegeven. Ga zelf na hoe deze eruit zou kunnen zien.
+
+
+
+

@@ -1,11 +1,13 @@
 # Lijsten (2)
 
-Opbouw van een lijst: `[a, b, c] == a :: [b, c]`
+In dit hoofdstuk behandelen we functies op lijsten, bijvoorbeeld voor het optellen van alle elementen in een lijst.
+In zo'n functie gebruiken we de manier waarop een lijst opgebouwd is:  `[a, b, c] == a :: [b, c]`
 
-Lijst is of `[]` , of van de vorm `x :: xs` (*recursieve structuur*)
+Een lijst is ofwel `[]` (de lege lijst), ofwel van de vorm `x :: xs` ("x op kop van de lijst xa").
 
+> Een niet-lege lijst bestaat uit een kop-element en een staart-lijst; dit noemen we wel een *recursieve* structuur, omdat dezelfde lijst-vorm in de lijst weer terugkomt. Een ander voorbeeld van een recursieve structuur is een *boom*: een boom is ofwel leeg, ofwel een knoop met een waarde, en een aantal subbomen.
 
-Lijst-functie volgt opbouw van de lijst
+Een lijst-functie volgt de opbouw van de lijst
 
 ```elm
   f lst =
@@ -14,20 +16,24 @@ Lijst-functie volgt opbouw van de lijst
          ... compute for x and xs...
       []
          ... compute for []
-```         
+```
 
-Sommeren van alle elementen in een lijst:
+We gebruiken hier de `case x of ...`-expressie, waarin de verschillende vormen van de waarde `x` onderscheiden worden.
+
+Als eerste voorbeeld bekijken we een functie voor het sommeren van alle elementen in een lijst:
 
 ```elm
 sum : List Int -> Int
 sum lst =
   case lst of
     (x :: xs) ->
-      x + (sum xs)
+      x + sum xs
      
     [] ->
       0
 ```
+
+We kunnen `sum [3,5]` met de hand uitwerken, op dezelfde manier als we eerder voor de simpele functies gedaan hebben:
 
 ```elm
     sum [3,5]
@@ -47,248 +53,36 @@ sum lst =
     8
 ```
 
-## definitie van map
+Merk op:
 
-```elm
-map : (a -> b) -> List a -> List b
-map f lst =
-  case lst of
-    (x :: xs) ->
-      (f x) :: (map f xs)
-      
-    [] ->
-      []
-```      
-
-## definitie van foldr
-
-```elm
-foldr : (a -> b -> b) -> b -> List a -> b
-foldr f e lst =
-  case lst of
-    (x :: xs) ->
-      f x (foldr f xs)
-      
-    [] ->
-      e
-```
+* de specificatie (betekenis) van `sum lst` is dat deze de som van de elementen van `lst` oplevert.
+* via de `case` splitsen we de lijst `lst` in de kop `x` en de staart `xs`.
+* de lijst `xs` is (1) korter dan de lijst `lst.
+* in de functie `sum` nemen we aan dat de functie `sum` voor de (kortere) lijst `xs` het gespecificeerde resultaat oplevert.
 
 import Html exposing (div, text, Html)
 import List exposing (range, repeat, member, length, reverse, filter)
 import Debug exposing (toString)
-
-printList : List a -> Html msg
-printList lst =
-  div [] [text (Debug.toString lst)]
-  
-printBool : Bool -> Html msg
-printBool b =
-  div [] [text (Debug.toString b)]
   
 printInt : Int -> Html msg
 printInt x =
   div [] [text (Debug.toString x)]  
 
-map : (a -> b) -> List a -> List b
-map      f        lst     =
-  case lst of
-    (x :: xs) ->
-      (f x) :: (map f xs)
+-- own functions
 
-    [] ->
-      []
-
-foldr : (a -> b -> b) -> b -> List a -> b
-foldr        f           e    lst     =
-  case lst of
-    (x :: xs) ->
-      f x (foldr f e xs)
-
-    [] ->
-      e 
-
-double x = x + x
-isEven x = modBy 2 x == 0 -- even: rest na deling door 2 is 0
-firstprimes = [2,3,5,7,11]
-
-main =
-  div [] 
-  [ printList ( map double firstprimes )
-  , printList ( map isEven (range 1 10) )
-  , printList ( filter isEven (range 1 10) )
-  , printInt  ( foldr (+) 0 (repeat 10 3) )
-  , printInt  ( foldr (*) 1 (range 1 10) )
-  ]
--- compile-code
-
-## Samenvatting
-
-* `map`, `foldr` en `filter` zijn *gewone Elm-functies*
-* een lijst-functie volgt de (recursieve) structuur van de lijst
-
-Volgende stap: bomen en functies op bomen.
-
-import Html exposing (div, text, Html)
-import List exposing (range, repeat, member, length, reverse, filter)
-import Debug exposing (toString)
-
-printList : List a -> Html msg
-printList lst =
-  div [] [text (Debug.toString lst)]
-  
-printBool : Bool -> Html msg
-printBool b =
-  div [] [text (Debug.toString b)]
-  
-printInt : Int -> Html msg
-printInt x =
-  div [] [text (Debug.toString x)] 
-
-map : (a -> b) -> List a -> List b
-map f lst =
-  case lst of
-    (x :: xs) ->
-      (f x) :: (map f xs)
-
-    [] ->
-      []
-
-foldr : (a -> b -> b) -> b -> List a -> b
-foldr f e lst =
-  case lst of
-    (x :: xs) ->
-      f x (foldr f e xs)
-
-    [] ->
-      e 
-
-double x = x + x
-isEven x = modBy 2 x == 0 -- even: rest na deling door 2 is 0
-firstprimes = [2,3,5,7,11]
-
-main =
-  div [] 
-  [ printList ( map double firstprimes )
-  , printList ( map isEven (range 1 10) )
-  , printList ( filter isEven (range 1 10) )
-  , printInt  ( foldr (+) 0 (repeat 10 3) )
-  , printInt  ( foldr (*) 1 (range 1 10) )
-  ]
--- compile-code
-
-**Opdracht**
-
-* definieer de functie `filter f lst` voor het filteren van een lijst met een Bool-functie.
-* demonstreer deze functie in het bovenstaande programma.
-
-**Opdracht**
-
-* definieer de functie `length : (List a) -> Int` voor het bepalen van het aantal elementen in een lijst
-    * met behulp van `map`;
-    * uitgeschreven, zoals in het `sum`-voorbeeld
-* definieer de functie `range : Int -> Int -> List Int` voor het maken van een lijst van opeenvolgende gehele getallen.
-* definieer de functie `repeat : Int -> a -> List a` voor het maken van een lijst met identieke elementen.
-
-**Opdracht**
-
-* schrijf de berekening `map sqr [3,5]` uit, met `sqr x = x * x`.
-* schrijf de berekening `foldr (+) 0 [3,5]` uit, met `(+) x y = x + y`
-* schrijf de berekening `foldr (::) [] [3,5]` uit, met `(::) x xs = x :: xs`.
-
-## Een andere variatie: foldl
-
-`sum [1,2,3]` als ((0 + 1) + 2) + 3 of eigenlijk 3 + (2 + (1 + 0)))
-
-
-```elm
+sum : List Int -> Int
 sum lst =
-  sum1 0 lst
-  
-sum1 acc lst =   -- acc is "accumulator" of partial result
   case lst of
     (x :: xs) ->
-      sum1 (x + acc) xs
-      
-    [] ->
-      acc -- final result
-```
-
-```
-foldl : (a -> b -> b) -> b -> List a -> b 
-foldl f acc lst =
-  case lst of
-    (x :: xs) ->
-      foldl f (f x acc) xs
-      
-    [] ->
-      acc
-```      
-
-**Opdracht**
-
-* Schrijf de berekening `foldl (+) 0 [3,5]` uit, met `(+) x y = x + y`
-* Ga na wat het resultaat is van `foldl (::) [] [3,5]`, met `(::) x xs = x :: xs`
-* Schrijf deze berekening uit.
-
-import Html exposing (div, text, Html)
-import List exposing (range, repeat, member, length, reverse, filter)
-import Debug exposing (toString)
-
-printList : List a -> Html msg
-printList lst =
-  div [] [text (Debug.toString lst)]
-  
-printBool : Bool -> Html msg
-printBool b =
-  div [] [text (Debug.toString b)]
-  
-printInt : Int -> Html msg
-printInt x =
-  div [] [text (Debug.toString x)] 
-
-map : (a -> b) -> List a -> List b
-map f lst =
-  case lst of
-    (x :: xs) ->
-      (f x) :: (map f xs)
+      x + sum xs
 
     [] ->
-      []
-
-foldr : (a -> b -> b) -> b -> List a -> b
-foldr f e lst =
-  case lst of
-    (x :: xs) ->
-      f x (foldr f e xs)
-
-    [] ->
-      e
-  
-foldl : (a -> b -> b) -> b -> List a -> b  
-foldl f acc lst =
-  case lst of
-    (x :: xs) ->
-      foldl f (f x acc) xs
-      
-    [] ->
-      acc
-
-double x = x + x
-isEven x = modBy 2 x == 0 -- even: rest na deling door 2 is 0
-firstprimes = [2,3,5,7,11]
+      0
 
 main =
   div [] 
-  [ printList ( map double firstprimes )
-  , printList ( map isEven (range 1 10) )
-  , printList ( filter isEven (range 1 10) )
-  , printInt  ( foldr (+) 0 (repeat 10 3) )
-  , printInt  ( foldr (*) 1 (range 1 10) )
-  , printInt  ( foldl (*) 1 (range 1 10) )
-  , printList ( foldr (::) [] ["a","b","c"] )
-  , printList ( foldl (::) [] ["a","b","c"] )  
+  [ printInt ( sum [3,5,7] )
+  , printInt ( sum (range 1 100))
   ]
 -- compile-code
-
-
 

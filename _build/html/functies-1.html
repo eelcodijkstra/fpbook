@@ -111,6 +111,11 @@
    Lijsten (2)
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functies-2.html">
+   Functies (2)
+  </a>
+ </li>
 </ul>
 
 </nav> <!-- To handle the deprecated key -->
@@ -239,6 +244,11 @@
    Anonieme functies
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#voorbeeld-bulletlist">
+   Voorbeeld: bulletlist
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -345,6 +355,10 @@
 
 </pre></div>
 </div>
+</div>
+<div class="section" id="voorbeeld-bulletlist">
+<h2>Voorbeeld: bulletlist<a class="headerlink" href="#voorbeeld-bulletlist" title="Permalink to this headline">¶</a></h2>
+<p>We hebben eerder het onderstaande programma gezien, als voorbeeld van het benutten van functies in de context van HTML.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-elm notranslate"><div class="highlight"><pre><span></span><span class="kn">import </span><span class="nc">Html</span> <span class="nv">exposing</span> <span class="p">(</span><span class="nv">div</span><span class="p">,</span> <span class="nv">ul</span><span class="p">,</span> <span class="nv">li</span><span class="p">,</span> <span class="nv">text</span><span class="p">)</span>
@@ -4904,6 +4918,26 @@ _Platform_export({'Main':{'init':_VirtualDom_init($author$project$Main$main)(0)(
             });
         </script></div>
 </div>
+<p>Op basis van de bovenstaande uitleg over functies is de functie <code class="docutils literal notranslate"><span class="pre">bulletlist</span></code> al wat beter te begrijpen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bulletlist</span> <span class="n">attrs</span> <span class="n">lst</span> <span class="o">=</span>
+  <span class="n">ul</span> <span class="n">attrs</span> <span class="p">(</span><span class="nb">map</span> <span class="p">(</span>\<span class="n">elt</span> <span class="o">-&gt;</span> <span class="n">li</span> <span class="p">[]</span> <span class="p">[</span><span class="n">text</span> <span class="n">elt</span><span class="p">])</span> <span class="n">lst</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>dit is de definitie van een functie met twee parameters, <code class="docutils literal notranslate"><span class="pre">attrs</span></code> en <code class="docutils literal notranslate"><span class="pre">lst</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ul</span> <span class="pre">attrs</span> <span class="pre">(...)</span></code> is de aanroep van de functie <code class="docutils literal notranslate"><span class="pre">ul</span></code> met twee parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">map</span> <span class="pre">(...)</span> <span class="pre">lst</span></code> is de aanroep van een functie met twee parameters,</p></li>
+<li><p>waarvan de eerste parameter een <em>anonieme functie</em> is:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\elt</span> <span class="pre">-&gt;</span> <span class="pre">li</span> <span class="pre">[]</span> <span class="pre">[text</span> <span class="pre">elt]</span></code></p></li>
+<li><p>hierin is <code class="docutils literal notranslate"><span class="pre">li</span> <span class="pre">[]</span> <span class="pre">[...]</span></code> weer de aanroep van een functie met 2 parameters.</p></li>
+<li><p>de functies <code class="docutils literal notranslate"><span class="pre">ul</span></code> en <code class="docutils literal notranslate"><span class="pre">li</span></code> zijn Elm-functies die overeenkomen met de HTML-tags <code class="docutils literal notranslate"><span class="pre">&lt;ul&gt;</span></code> en <code class="docutils literal notranslate"><span class="pre">&lt;li&gt;</span></code></p></li>
+</ul>
+<p>In het volgende hoofdstuk behandelen we de functie <code class="docutils literal notranslate"><span class="pre">map</span> <span class="pre">f</span> <span class="pre">lst</span></code>: het resultaat is een lijst waarin <code class="docutils literal notranslate"><span class="pre">f</span></code> toegepast is op elm element van de oorspronkelijke lijst.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="nb">map</span> <span class="n">double</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="n">double</span> <span class="mi">1</span><span class="p">,</span> <span class="n">double</span> <span class="mi">3</span><span class="p">,</span> <span class="n">double</span> <span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Ga na dat je met het gebruik van <code class="docutils literal notranslate"><span class="pre">map</span></code> in het HTML-voorbeeld een lijst-element (<code class="docutils literal notranslate"><span class="pre">li</span></code>) maakt voor elk element van de lijst <code class="docutils literal notranslate"><span class="pre">lst</span></code>.</p>
+<p>We hebben bij deze functie <code class="docutils literal notranslate"><span class="pre">bulletlist</span></code> nog geen typering gegeven. Ga zelf na hoe deze eruit zou kunnen zien.</p>
 </div>
 </div>
 
