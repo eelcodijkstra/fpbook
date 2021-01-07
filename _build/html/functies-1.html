@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Functies &#8212; Functioneel programmeren in Elm</title>
+    <title>Functies (1) &#8212; Functioneel programmeren in Elm</title>
     
   <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -98,7 +98,7 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Functies
+   Functies (1)
   </a>
  </li>
  <li class="toctree-l1">
@@ -172,11 +172,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/eelcodijkstra/fp-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/eelcodijkstra/fpbook"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/eelcodijkstra/fp-book/issues/new?title=Issue%20on%20page%20%2Ffuncties-1.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/eelcodijkstra/fpbook/issues/new?title=Issue%20on%20page%20%2Ffuncties-1.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -197,7 +197,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/eelcodijkstra/fp-book/master?urlpath=tree/docs/functies-1.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/eelcodijkstra/fpbook/main?urlpath=tree/functies-1.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -260,11 +260,30 @@
         
               <div>
                 
-  <div class="section" id="functies">
-<h1>Functies<a class="headerlink" href="#functies" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="functies-1">
+<h1>Functies (1)<a class="headerlink" href="#functies-1" title="Permalink to this headline">¶</a></h1>
+<p><strong>Onderwerpen:</strong> functie-definitie; functie-aanroep; typering van functies; Currying; anonieme functies.</p>
+<p>Een functie-aanroep heeft de vorm: <code class="docutils literal notranslate"><span class="pre">fname</span> <span class="pre">par1</span> <span class="pre">par2</span> <span class="pre">...</span></code>: de naam van de functie gevolgd door de parameter-expressies.
+In tegenstelling tot veel andere programmeertalen worden hierbij geen haakjes en komma’s gebruikt.
+Soms zijn haakjes nodig omdat functie-aanroep sterker bindt dan optellen of vermenigvuldigen, of omdat een expressie van rechts naar links uitgerekend moet worden.</p>
+<p>Enkele voorbeelden van functie-aanroepen:</p>
+<div class="highlight-elm notranslate"><div class="highlight"><pre><span></span><span class="nv">double</span> <span class="mi">3</span>
+<span class="nv">max</span> <span class="mi">3</span> <span class="mi">4</span>
+<span class="nv">succ</span> <span class="p">(</span><span class="nv">double</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nv">max</span> <span class="p">(</span><span class="nv">double</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="nv">succ</span> <span class="mi">9</span><span class="p">)</span>
+<span class="kt">List</span><span class="nf">.</span><span class="nv">map</span> <span class="nv">f</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Zonder haakjes zou <code class="docutils literal notranslate"><span class="pre">succ</span> <span class="pre">double</span> <span class="pre">4</span></code> verwerkt worden als <code class="docutils literal notranslate"><span class="pre">(succ</span> <span class="pre">double)</span> <span class="pre">4</span></code> (wat een foutmelding geeft).</p>
 <div class="section" id="functie-definitie">
 <h2>Functie-definitie<a class="headerlink" href="#functie-definitie" title="Permalink to this headline">¶</a></h2>
-<p>Functie-definities:</p>
+<p>Voordat je een functie kunt gebruiken moet deze gedefinieerd zijn.
+Je kunt een voorgedefinieerde functie gebruiken uit een geïmporteerde module (<em>package</em>),
+of een zelf-gedefinieerde functie.</p>
+<p>Een functie-definitie heeft de vorm: <code class="docutils literal notranslate"><span class="pre">fname</span> <span class="pre">pname1</span> <span class="pre">pname2</span> <span class="pre">pname3</span> <span class="pre">...</span> <span class="pre">=</span> <span class="pre">...expr</span> <span class="pre">in</span> <span class="pre">pname1,</span> <span class="pre">...</span></code>
+De namen van de parameters kun je vrij kiezen, deze hebben alleen betekenis in de definitie,
+niet bij de aanroep.</p>
+<p>Enkele voorbeelden van functie-definities:</p>
 <div class="highlight-elm notranslate"><div class="highlight"><pre><span></span><span class="nv">double</span> <span class="nv">x</span> <span class="nf">=</span> <span class="nv">x</span> <span class="nf">+</span> <span class="nv">x</span>
 
 <span class="nv">max</span> <span class="nv">x</span> <span class="nv">y</span> <span class="nf">=</span> <span class="kr">if</span> <span class="nv">x</span> <span class="nf">&gt;=</span> <span class="nv">y</span> <span class="kr">then</span> <span class="nv">x</span> <span class="kr">else</span> <span class="nv">y</span>
@@ -272,24 +291,14 @@
 <span class="nv">succ</span> <span class="nv">x</span> <span class="nf">=</span> <span class="nv">x</span> <span class="nf">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>gelijkheid: links door rechts vervangen (of omgekeerd)</p></li>
-<li><p>notatie: geen haakjes</p></li>
-</ul>
-<p>Functie-aanroepen:</p>
-<div class="highlight-elm notranslate"><div class="highlight"><pre><span></span><span class="nv">double</span> <span class="mi">3</span>
-
-<span class="nv">max</span> <span class="mi">3</span> <span class="mi">4</span>
-
-<span class="nv">succ</span> <span class="p">(</span><span class="nv">double</span> <span class="mi">4</span><span class="p">)</span>
-
-<span class="nv">max</span> <span class="p">(</span><span class="nv">double</span> <span class="mi">4</span><span class="p">)</span> <span class="p">(</span><span class="nv">succ</span> <span class="mi">9</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Aanroep: <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">x</span></code> (opeenvolging) in plaats van <code class="docutils literal notranslate"><span class="pre">f(x)</span></code></p>
+<p>De betekenis van zo’n definitie is dat je een functie-aanroep kunt vervangen door het rechterlid van de definitie (de “body”), waarbij je de parameternamen vervangt door de parameter-waarden in de aanroep.</p>
+<p>Merk op dat hier, net als bij de aanroep, geen haakjes gebruikt worden.</p>
 </div>
 <div class="section" id="rekenen-met-functies">
 <h2>Rekenen met functies<a class="headerlink" href="#rekenen-met-functies" title="Permalink to this headline">¶</a></h2>
+<p>In het voorbeeld hieronder werken we een functie-aanroep met de hand uit,
+waarbij we steeds een aanroep vervangen door het bijbehorende rechterlid van de definitie.
+Bij elke stap beschrijven we welke regel we gebruiken.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">double</span> <span class="p">(</span><span class="n">double</span> <span class="mi">3</span><span class="p">)</span>
 <span class="o">=</span>                 <span class="p">{</span> <span class="n">def</span><span class="o">.</span> <span class="n">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span> <span class="p">}</span>
     <span class="n">double</span> <span class="p">(</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
@@ -301,6 +310,14 @@
     <span class="mi">12</span>
 </pre></div>
 </div>
+<p>Dit voorbeeld is nog erg eenvoudig, maar het gaat om de systematische aanpak.
+Het gebruik hiervan bij de lastige functies die we later tegenkomen helpt om de principes onder de knie te krijgen.</p>
+<p>Nog een voorbeeld, nu met een <code class="docutils literal notranslate"><span class="pre">if</span></code>-expressie. De <code class="docutils literal notranslate"><span class="pre">if</span></code>-regel is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="k">if</span> <span class="kc">True</span> <span class="n">then</span> <span class="n">x</span> <span class="k">else</span> <span class="n">y</span>   <span class="o">=&gt;</span> <span class="n">x</span>
+   <span class="k">if</span> <span class="kc">False</span> <span class="n">then</span> <span class="n">x</span> <span class="k">else</span> <span class="n">y</span>  <span class="o">=&gt;</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>We gebruiken hieronder de functie: <code class="docutils literal notranslate"><span class="pre">max</span> <span class="pre">x</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">if</span> <span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">y</span> <span class="pre">then</span> <span class="pre">x</span> <span class="pre">else</span> <span class="pre">y</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="nb">max</span> <span class="mi">3</span> <span class="p">(</span><span class="n">double</span> <span class="mi">2</span><span class="p">)</span>
 <span class="o">=</span>              <span class="p">{</span> <span class="n">def</span><span class="o">.</span> <span class="n">double</span> <span class="p">}</span>
     <span class="nb">max</span> <span class="mi">3</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>

@@ -1,8 +1,35 @@
-# Functies
+# Functies (1)
+
+**Onderwerpen:** functie-definitie; functie-aanroep; typering van functies; Currying; anonieme functies.
+
+
+Een functie-aanroep heeft de vorm: `fname par1 par2 ...`: de naam van de functie gevolgd door de parameter-expressies.
+In tegenstelling tot veel andere programmeertalen worden hierbij geen haakjes en komma's gebruikt.
+Soms zijn haakjes nodig omdat functie-aanroep sterker bindt dan optellen of vermenigvuldigen, of omdat een expressie van rechts naar links uitgerekend moet worden.
+
+Enkele voorbeelden van functie-aanroepen:
+
+```elm
+double 3
+max 3 4
+succ (double 4)
+max (double 4) (succ 9)
+List.map f [1,2,3]
+```
+
+Zonder haakjes zou `succ double 4` verwerkt worden als `(succ double) 4` (wat een foutmelding geeft).
 
 ## Functie-definitie
 
-Functie-definities:
+Voordat je een functie kunt gebruiken moet deze gedefinieerd zijn.
+Je kunt een voorgedefinieerde functie gebruiken uit een geïmporteerde module (*package*),
+of een zelf-gedefinieerde functie.
+
+Een functie-definitie heeft de vorm: `fname pname1 pname2 pname3 ... = ...expr in pname1, ...`
+De namen van de parameters kun je vrij kiezen, deze hebben alleen betekenis in de definitie,
+niet bij de aanroep.
+
+Enkele voorbeelden van functie-definities:
 
 ```elm
 double x = x + x
@@ -12,24 +39,15 @@ max x y = if x >= y then x else y
 succ x = x + 1
 ```
 
-* gelijkheid: links door rechts vervangen (of omgekeerd)
-* notatie: geen haakjes
+De betekenis van zo'n definitie is dat je een functie-aanroep kunt vervangen door het rechterlid van de definitie (de "body"), waarbij je de parameternamen vervangt door de parameter-waarden in de aanroep.
 
-Functie-aanroepen:
-
-```elm
-double 3
-
-max 3 4
-
-succ (double 4)
-
-max (double 4) (succ 9)
-```
-
-Aanroep: `f x` (opeenvolging) in plaats van `f(x)`
+Merk op dat hier, net als bij de aanroep, geen haakjes gebruikt worden.
 
 ## Rekenen met functies
+
+In het voorbeeld hieronder werken we een functie-aanroep met de hand uit,
+waarbij we steeds een aanroep vervangen door het bijbehorende rechterlid van de definitie.
+Bij elke stap beschrijven we welke regel we gebruiken.
 
 ```
     double (double 3)
@@ -42,6 +60,17 @@ Aanroep: `f x` (opeenvolging) in plaats van `f(x)`
 =                 { rekenen }
     12
 ```
+
+Dit voorbeeld is nog erg eenvoudig, maar het gaat om de systematische aanpak.
+Het gebruik hiervan bij de lastige functies die we later tegenkomen helpt om de principes onder de knie te krijgen.
+
+Nog een voorbeeld, nu met een `if`-expressie. De `if`-regel is:
+```
+   if True then x else y   => x
+   if False then x else y  => y
+```
+
+We gebruiken hieronder de functie: `max x y = if x >= y then x else y`.
 
 ```
     max 3 (double 2)
