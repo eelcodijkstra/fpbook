@@ -1,40 +1,91 @@
 # Inleiding
 
-Functioneel programmeren is een stijl van programmeren waarbij het gebruik van functies centraal staat. Het is één van de belangrijke programmeerparadigma's, naast imperatief programmeren en object-georiënteerd programmeren. Deze stijl van programmeren met functies kun je overigens ook toepassen in andere programmeertalen.
+## Functioneel programmeren
 
-## Wat is functioneel programmeren?
+Stijl van programmeren waarin *functies* centraal staan
 
-## Waarom functioneel programmeren?
+* functie-definitie
+* functie-aanroep
+* functie-waarden
+    * als resultaat
+    * als parameter
+    * als samenstelling van functies 
+    
+Functionele stijl kun je in veel talen toepassen. 
 
-## Hoe functioneel programmeren?
+## Elm - als functionele taal
 
-## Over dit materiaal
+* "puur functioneel": geen variabelen, toekenning
+* "statische typering" - vgl. ook Pascal, Java, Rust, enz.
+* "gecompileerde taal" - i.t.t. Python, JavaScript
 
-* je kunt niet in een paar uurtjes leren functioneel programmeren
-* je kunt niet in eeen paar uurtjes Elm leren.
+Elm is bedoeld voor uitvoering in de browser, als alternatief voor JavaScript.
 
-Met andere woorden: we moeten in dit materiaal noodgedwongen erg selectief zijn.
-Het doel is niet om te leren functioneel programmeren; het doel is niet om Elm te leren.
+## Elm in de browser
 
-Het doel van dit materiaal is om een basisbegrip van functioneel programmeren te krijgen, en van enkele van de belangrijke voordelen.
+HTML - voorbeeld:
 
-* referential transparency
+```html
+<div style="color: red;">
+  <h3 style="color: blue;"> Kopje </h3>
+  <p> Tekst tekst tekst </p>
+</div> 
+```
 
-> In functional programming, referential transparency is generally defined as the fact that an expression, in a program, may be replaced by its value (or anything having the same value) without changing the result of the program.
+Elm - voorbeeld:
 
-Eén van de voordelen van Elm is de typering; te vergelijken met de typering in Haskell.
-Op zich is deze statische typering niet gekoppeld aan functioneel programmeren:
-je kunt functionele programmeertalen hebben zonder statische typering - vgl. Lisp.
-En je kunt niet-functionele programmeertalen hebben met statische typering - vgl. Java, of nog beter: Rust.
+```elm
+  div [style "color" "red"]
+    [ h3 [style "color" "blue"] [ text "Kopje"]
+    , p  []  [ text "Tekst tekst tekst" ]
+    ] 
+```
+* `div`,`h3`, `p`, `text`, `style` zijn *functies*
+* met een attributen-lijst en een elementen-lijst
 
-* https://www.sitepoint.com/what-is-referential-transparency/
+import Html exposing (div, h3, p, text)
+import Html.Attributes exposing (style)
 
-Gevolgen van referential transparency:
+main =
+  div [style "color" "red"]
+    [ h3 [style "color" "blue"] [ text "Kopje"]
+    , p  []  [ text "Tekst tekst tekst" ]
+    ] 
 
-* programma's beter leesbaar
-* optimalisatie, bijvoorbeeld caching; lazy evaluation; (of juist eager); efficiënt/selectief bijwerken van de DOM
+-- compile-code
+
+Compleet Elm-programma
+
+* `import` geeft gebruikte *packages* aan
+* `-- compile-code` alleen voor Jupyter Notebook
+* uitvoeren in Notebook: 
+    * selecteer cel
+    * Shift-Return (of "run"-pijltje bovenin)
+
+Andere omgevingen voor uitvoeren van Elm:
+
+* https://elm-lang.org/try (web, online)
+* https://ellie-app.com (web, online)
+* elm-repl
+    * in Terminal `elm repl`
+
+## Benutten van functies
 
 
+import Html exposing (div, ul, li, text)
+import Html.Attributes exposing (style)
+import List exposing (map)
+
+bulletlist attrs lst =
+  ul attrs (map (\elt -> li [] [text elt]) lst)
+
+main =
+  div []
+  [ bulletlist [] ["aap", "noot", "mies"]
+  , bulletlist [style "color" "blue"] ["wim", "zus", "jet"]  
+  ]
+  
+-- compile-code
 
 
 ```{toctree}
@@ -42,12 +93,7 @@ Gevolgen van referential transparency:
 :titlesonly:
 
 
-elm-overzicht
-elm
-functies
-lijsten
-data
-bomen
-bomen-2
-interactie
+functies-1
+lijsten-1
+lijsten-2
 ```
