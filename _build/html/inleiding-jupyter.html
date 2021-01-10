@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lijsten (1) &#8212; Functioneel programmeren in Elm</title>
+    <title>Inleiding Jupyter Notebooks &#8212; Functioneel programmeren in Elm</title>
     
   <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,8 +57,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Lijsten (2)" href="lijsten-2.html" />
-    <link rel="prev" title="Functies (1)" href="functies-1.html" />
+    <link rel="prev" title="Elm repl" href="elm-repl.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -100,14 +99,14 @@
   Functies en lijsten
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="functies-1.html">
    Functies (1)
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="lijsten-1.html">
    Lijsten (1)
   </a>
  </li>
@@ -139,14 +138,14 @@
   Appendix
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="elm-repl.html">
    Elm repl
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="inleiding-jupyter.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Inleiding Jupyter Notebooks
   </a>
  </li>
@@ -190,7 +189,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/lijsten-1.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/inleiding-jupyter.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -210,7 +209,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/eelcodijkstra/fpbook/issues/new?title=Issue%20on%20page%20%2Flijsten-1.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/eelcodijkstra/fpbook/issues/new?title=Issue%20on%20page%20%2Finleiding-jupyter.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -231,7 +230,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/eelcodijkstra/fpbook/main?urlpath=tree/lijsten-1.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/eelcodijkstra/fpbook/main?urlpath=tree/inleiding-jupyter.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -254,18 +253,38 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lijst-reeks-waarden-van-eenzelfde-type">
-   Lijst : reeks waarden van eenzelfde type
+  <a class="reference internal nav-link" href="#cellen-markdown-en-code">
+   Cellen: Markdown en Code
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#genereren-van-lijsten">
-   Genereren van lijsten
+  <a class="reference internal nav-link" href="#code-cellen">
+   Code-cellen
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#map-foldr-foldl-filter">
-   map, foldr/foldl, filter
+  <a class="reference internal nav-link" href="#code-meerdere-cellen">
+   Code: meerdere cellen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#markdown-cellen">
+   Markdown cellen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kernel">
+   Kernel
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tussenvoegen-en-verwijderen-van-cellen">
+   Tussenvoegen en verwijderen van cellen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#samenvatting">
+   Samenvatting
   </a>
  </li>
 </ul>
@@ -279,64 +298,31 @@
         
               <div>
                 
-  <div class="section" id="lijsten-1">
-<h1>Lijsten (1)<a class="headerlink" href="#lijsten-1" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="lijst-reeks-waarden-van-eenzelfde-type">
-<h2>Lijst : reeks waarden van eenzelfde type<a class="headerlink" href="#lijst-reeks-waarden-van-eenzelfde-type" title="Permalink to this headline">¶</a></h2>
-<p>opsommen:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">firstprimes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">]</span>
-<span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rotterdam&quot;</span><span class="p">,</span> <span class="s2">&quot;Den Haag&quot;</span><span class="p">,</span> <span class="s2">&quot;Utrecht&quot;</span><span class="p">,</span> <span class="s2">&quot;Eindhoven&quot;</span><span class="p">]</span>
-<span class="n">multiples</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">27</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">64</span><span class="p">]]</span>
-<span class="n">emptylist</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">singleton</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>plaats element op kop van lijst (cons):  <code class="docutils literal notranslate"><span class="pre">&quot;Amsterdam&quot;</span> <span class="pre">::</span> <span class="pre">cities</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">[3,5,7,11]</span> <span class="pre">==</span> <span class="pre">3</span> <span class="pre">::</span> <span class="pre">5</span> <span class="pre">::</span> <span class="pre">7</span> <span class="pre">::</span> <span class="pre">11</span> <span class="pre">::</span> <span class="pre">[]</span></code></p>
-</div>
-<div class="section" id="genereren-van-lijsten">
-<h2>Genereren van lijsten<a class="headerlink" href="#genereren-van-lijsten" title="Permalink to this headline">¶</a></h2>
-<p>Enkele functies voor het genereren van lijsten:</p>
-<p><code class="docutils literal notranslate"><span class="pre">range</span> <span class="pre">lo</span> <span class="pre">hi</span></code>: genereert de lijst <code class="docutils literal notranslate"><span class="pre">[lo,</span> <span class="pre">lo+1,</span> <span class="pre">...,</span> <span class="pre">hi]</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">repeat</span> <span class="pre">n</span> <span class="pre">x</span></code> : genereert de lijst <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">x,</span> <span class="pre">...,</span> <span class="pre">x]</span></code> van lengte n.</p>
-<div class="highlight-elm notranslate"><div class="highlight"><pre><span></span>  <span class="nv">range</span> <span class="mi">2</span> <span class="mi">4</span> <span class="nf">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
-  <span class="nv">range</span> <span class="mi">4</span> <span class="mi">2</span> <span class="nf">==</span> <span class="p">[]</span>
-
-  <span class="nv">repeat</span> <span class="mi">3</span> <span class="s">&quot;noot&quot;</span> <span class="nf">==</span> <span class="p">[</span><span class="s">&quot;noot&quot;</span><span class="p">,</span> <span class="s">&quot;noot&quot;</span><span class="p">,</span> <span class="s">&quot;noot&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">++</span></code> : append (samenstellen)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">reverse</span></code> : omkeren van een lijst</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">length</span></code> : lengte van een lijst</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">member</span></code> : test of een element in de lijst voorkomt</p></li>
-</ul>
-<div class="highlight-elm notranslate"><div class="highlight"><pre><span></span><span class="nv">morecities</span> <span class="nf">=</span> <span class="nv">cities</span> <span class="nf">++</span> <span class="p">[</span><span class="s">&quot;Groningen&quot;</span><span class="p">,</span> <span class="s">&quot;Leeuwarden&quot;</span><span class="p">,</span> <span class="s">&quot;Assen&quot;</span><span class="p">]</span>
-<span class="nv">moreprimes</span> <span class="nf">=</span> <span class="nv">firstprimes</span> <span class="nf">++</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">29</span><span class="p">]</span>
-
-  <span class="nv">reverse</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">]</span> <span class="nf">==</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-  <span class="nv">length</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">]</span> <span class="nf">==</span> <span class="mi">4</span>
-  <span class="nv">member</span> <span class="mi">4</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">]</span> <span class="nf">==</span> <span class="kt">False</span>
-</pre></div>
-</div>
+  <div class="section" id="inleiding-jupyter-notebooks">
+<h1>Inleiding Jupyter Notebooks<a class="headerlink" href="#inleiding-jupyter-notebooks" title="Permalink to this headline">¶</a></h1>
+<p>Voor het oefenen met Elm gebruiken we <a class="reference external" href="https://jupyter.org">Jupyter Notebooks</a>.
+Hiermee kun je op een interactieve manier aan de slag, waarbij je alle vrijheden hebt om je eigen varianten uit te proberen.</p>
+<p>De uitleg hieronder beschrijft eerst de principes van Jupyter notebooks, en de manier waarop we deze voor Elm gebruiken.</p>
+<div class="section" id="cellen-markdown-en-code">
+<h2>Cellen: Markdown en Code<a class="headerlink" href="#cellen-markdown-en-code" title="Permalink to this headline">¶</a></h2>
+<p>Een notebook bestaan uit cellen.</p>
+<p>Je selecteert een cel door op de cel te klikken, of in de kantlijn links van de cel.
+Je selecteert de volgende/vorige cel met de pijltjestoetsen up/down.
+<strong>Selecteer nu deze cel.</strong></p>
+<p>Er zijn twee soorten cellen: <strong>Code</strong> en <strong>Markdown</strong>.
+Het type van de geselecteerde cel vind je in de interface-balk bovenin.
+Met dit menu kun je ook het type van de cel veranderen
+Deze cel is een <strong>Markdown</strong> cel, de volgende cel is een (Elm) <strong>Code</strong> cel. <strong>Controleer dit.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-elm notranslate"><div class="highlight"><pre><span></span><span class="kn">import </span><span class="nc">Html</span> <span class="nv">exposing</span> <span class="p">(</span><span class="nv">div</span><span class="p">,</span> <span class="nv">text</span><span class="p">,</span> <span class="kt">Html</span><span class="p">)</span>
-<span class="kn">import </span><span class="nc">List</span> <span class="nv">exposing</span> <span class="p">(</span><span class="nv">range</span><span class="p">,</span> <span class="nv">repeat</span><span class="p">,</span> <span class="nv">member</span><span class="p">,</span> <span class="nv">length</span><span class="p">,</span> <span class="nv">reverse</span><span class="p">)</span>
-<span class="kn">import </span><span class="nc">Debug</span> <span class="nv">exposing</span> <span class="p">(</span><span class="nv">toString</span><span class="p">)</span>
-
-<span class="nv">printList</span> <span class="nv">lst</span> <span class="nf">=</span> <span class="nv">div</span> <span class="p">[]</span> <span class="p">[</span><span class="nv">text</span> <span class="p">(</span><span class="kt">Debug</span><span class="nf">.</span><span class="nv">toString</span> <span class="nv">lst</span><span class="p">)]</span>
-  
-<span class="nv">firstprimes</span> <span class="nf">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">]</span>  
+<div class="highlight-elm notranslate"><div class="highlight"><pre><span></span><span class="kn">import </span><span class="nc">Html</span> <span class="nv">exposing</span> <span class="p">(</span><span class="nv">div</span><span class="p">,</span> <span class="nv">p</span><span class="p">,</span> <span class="nv">text</span><span class="p">)</span>
+<span class="kn">import </span><span class="nc">Html.Attributes</span> <span class="nv">exposing</span> <span class="p">(</span><span class="nv">style</span><span class="p">)</span>
 
 <span class="kr">main </span><span class="nf">=</span>
-  <span class="nv">div</span> <span class="p">[]</span>
-  <span class="p">[</span> <span class="nv">printList</span> <span class="p">(</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span> <span class="nf">++</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span> <span class="p">)</span>
-  <span class="p">,</span> <span class="nv">printList</span> <span class="p">(</span> <span class="mi">1</span> <span class="nf">::</span> <span class="mi">3</span> <span class="nf">::</span> <span class="mi">5</span> <span class="nf">::</span> <span class="mi">7</span> <span class="nf">::</span><span class="p">[]</span> <span class="p">)</span>
-  <span class="p">,</span> <span class="nv">printList</span> <span class="p">(</span> <span class="nv">reverse</span> <span class="p">(</span><span class="nv">range</span> <span class="mi">3</span> <span class="mi">7</span><span class="p">)</span> <span class="p">)</span> 
-  <span class="p">,</span> <span class="nv">printList</span> <span class="p">(</span> <span class="nv">repeat</span> <span class="mi">4</span> <span class="p">[</span><span class="s">&quot;hi&quot;</span><span class="p">,</span> <span class="s">&quot;world&quot;</span><span class="p">])</span>
-  <span class="p">,</span> <span class="nv">text</span> <span class="p">(</span><span class="kt">Debug</span><span class="nf">.</span><span class="nv">toString</span> <span class="p">(</span><span class="nv">member</span> <span class="mi">5</span> <span class="nv">firstprimes</span><span class="p">))</span>
-  <span class="p">]</span> 
+  <span class="nv">div</span> <span class="p">[</span><span class="nv">style</span> <span class="s">&quot;color&quot;</span> <span class="s">&quot;blue&quot;</span><span class="p">]</span>
+    <span class="p">[</span>  <span class="nv">p</span>  <span class="p">[]</span>  <span class="p">[</span> <span class="nv">text</span> <span class="s">&quot;Dit is de uitvoer van een Elm programma&quot;</span> <span class="p">]</span>
+    <span class="p">]</span> 
+
 <span class="c1">-- compile-code</span>
 </pre></div>
 </div>
@@ -4756,106 +4742,26 @@ var $elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 	}
 };
 var $elm$html$Html$div = _VirtualDom_node('div');
-var $author$project$Main$firstprimes = _List_fromArray(
-	[2, 3, 5, 7, 11]);
-var $elm$core$List$any = F2(
-	function (isOkay, list) {
-		any:
-		while (true) {
-			if (!list.b) {
-				return false;
-			} else {
-				var x = list.a;
-				var xs = list.b;
-				if (isOkay(x)) {
-					return true;
-				} else {
-					var $temp$isOkay = isOkay,
-						$temp$list = xs;
-					isOkay = $temp$isOkay;
-					list = $temp$list;
-					continue any;
-				}
-			}
-		}
-	});
-var $elm$core$List$member = F2(
-	function (x, xs) {
-		return A2(
-			$elm$core$List$any,
-			function (a) {
-				return _Utils_eq(a, x);
-			},
-			xs);
-	});
+var $elm$html$Html$p = _VirtualDom_node('p');
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $elm$core$Debug$toString = _Debug_toString;
-var $author$project$Main$printList = function (lst) {
-	return A2(
-		$elm$html$Html$div,
-		_List_Nil,
-		_List_fromArray(
-			[
-				$elm$html$Html$text(
-				$elm$core$Debug$toString(lst))
-			]));
-};
-var $elm$core$List$repeatHelp = F3(
-	function (result, n, value) {
-		repeatHelp:
-		while (true) {
-			if (n <= 0) {
-				return result;
-			} else {
-				var $temp$result = A2($elm$core$List$cons, value, result),
-					$temp$n = n - 1,
-					$temp$value = value;
-				result = $temp$result;
-				n = $temp$n;
-				value = $temp$value;
-				continue repeatHelp;
-			}
-		}
-	});
-var $elm$core$List$repeat = F2(
-	function (n, value) {
-		return A3($elm$core$List$repeatHelp, _List_Nil, n, value);
-	});
 var $author$project$Main$main = A2(
 	$elm$html$Html$div,
-	_List_Nil,
 	_List_fromArray(
 		[
-			$author$project$Main$printList(
-			_Utils_ap(
-				_List_fromArray(
-					[1, 3, 5]),
-				_List_fromArray(
-					[7, 9]))),
-			$author$project$Main$printList(
+			A2($elm$html$Html$Attributes$style, 'color', 'blue')
+		]),
+	_List_fromArray(
+		[
 			A2(
-				$elm$core$List$cons,
-				1,
-				A2(
-					$elm$core$List$cons,
-					3,
-					A2(
-						$elm$core$List$cons,
-						5,
-						A2($elm$core$List$cons, 7, _List_Nil))))),
-			$author$project$Main$printList(
-			$elm$core$List$reverse(
-				A2($elm$core$List$range, 3, 7))),
-			$author$project$Main$printList(
-			A2(
-				$elm$core$List$repeat,
-				4,
-				_List_fromArray(
-					['hi', 'world']))),
-			$elm$html$Html$text(
-			$elm$core$Debug$toString(
-				A2($elm$core$List$member, 5, $author$project$Main$firstprimes)))
+			$elm$html$Html$p,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$text('Dit is de uitvoer van een Elm programma')
+				]))
 		]));
 _Platform_export({'Main':{'init':_VirtualDom_init($author$project$Main$main)(0)(0)}});}(this));
 
@@ -4871,72 +4777,33 @@ _Platform_export({'Main':{'init':_VirtualDom_init($author$project$Main$main)(0)(
         </script></div>
 </div>
 </div>
-<div class="section" id="map-foldr-foldl-filter">
-<h2>map, foldr/foldl, filter<a class="headerlink" href="#map-foldr-foldl-filter" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">map</span> <span class="pre">f</span> <span class="pre">lst</span></code> - voert functie f uit op alle elementen in lst</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">map</span> <span class="pre">sqr</span> <span class="pre">[3,5,7]</span> <span class="pre">==</span> <span class="pre">[sqr</span> <span class="pre">3,</span> <span class="pre">sqr</span> <span class="pre">5,</span> <span class="pre">sqr</span> <span class="pre">7]</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">map</span> <span class="pre">double</span> <span class="pre">[3,5]</span> <span class="pre">==</span> <span class="pre">[double</span> <span class="pre">3,</span> <span class="pre">double</span> <span class="pre">5]</span> <span class="pre">==</span> <span class="pre">[6,10]</span></code></p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">foldr</span> <span class="pre">f</span> <span class="pre">e</span> <span class="pre">lst</span></code> - voert functie f uit <em>tussen</em> alle elementen in <code class="docutils literal notranslate"><span class="pre">e::lst</span></code>.</p>
-<div class="highlight-elm notranslate"><div class="highlight"><pre><span></span>  <span class="nv">foldr</span> <span class="nf">(+)</span> <span class="mi">0</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span> <span class="nf">==</span> <span class="mi">3</span> <span class="nf">+</span> <span class="p">(</span><span class="mi">5</span> <span class="nf">+</span> <span class="p">(</span><span class="mi">7</span> <span class="nf">+</span> <span class="mi">0</span><span class="p">))</span> <span class="nf">==</span> <span class="mi">15</span>
-  <span class="nv">foldr</span> <span class="nf">(*)</span> <span class="mi">1</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span> <span class="nf">==</span> <span class="mi">3</span> <span class="nf">*</span> <span class="p">(</span><span class="mi">5</span> <span class="nf">*</span> <span class="p">(</span><span class="mi">7</span> <span class="nf">*</span> <span class="mi">1</span><span class="p">))</span> <span class="nf">==</span> <span class="mi">105</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">(+)</span> <span class="pre">3</span> <span class="pre">4</span> <span class="pre">==</span> <span class="pre">3</span> <span class="pre">+</span> <span class="pre">4</span></code> - “+” is een functie</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">e</span></code> is <em>eenheidselement</em>:  0 voor +, 1 voor *</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">foldr</span></code> <em>reduceert</em> een lijst naar een enkele waarde.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">foldr</span></code> reduceert “van rechts naar links” (zie de haakjes),</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">foldl</span></code> reduceert “van links naar rechts”.</p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">filter</span> <span class="pre">f</span> <span class="pre">lst</span></code> - alleen die elementen uit <code class="docutils literal notranslate"><span class="pre">lst</span></code> waarvoor <code class="docutils literal notranslate"><span class="pre">f</span></code> <code class="docutils literal notranslate"><span class="pre">True</span></code> oplevert.</p>
-<div class="highlight-elm notranslate"><div class="highlight"><pre><span></span>  <span class="nv">filter</span> <span class="nv">isEven</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span> <span class="nf">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
-  <span class="nv">filter</span> <span class="nv">isOdd</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span> <span class="nf">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-</div>
+<div class="section" id="code-cellen">
+<h2>Code-cellen<a class="headerlink" href="#code-cellen" title="Permalink to this headline">¶</a></h2>
+<p><strong>Uitvoeren van een cel</strong>. De cel hierboven is een Code-cel, met daarin een Elm programma. <strong>Voer deze cel uit (Run)</strong>:</p>
+<ol class="simple">
+<li><p>Selecteer de cel</p></li>
+<li><p>Voer de cel uit, via Run (pijltje) in het menu hierboven, of via SHIFT-RETURN.</p></li>
+</ol>
+<p>Zoals je ziet verschijnt het resultaat van het Elm-programma onder de cel.</p>
+<blockquote>
+<div><p>Bij het uitvoeren van een Code-cel verschijnt er in de kantlijn een getal tussen rechte haken. Dit geeft de volgorde van de uitgevoerde cellen aan. Als je de cel nogmaals uitvoert, zie je een volgend getal.</p>
+</div></blockquote>
+<p><strong>Aanpassen van een cel.</strong> Je kunt de code in een Code-cel eenvoudig aanpassen: selecteer de cel, en verander de tekst.</p>
+<p><strong>Verander de Elm-expressie in de cel hieronder van</strong> <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">3</span></code> <strong>in:</strong> <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">+</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">5</span></code> en <strong>voer de cel uit</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-elm notranslate"><div class="highlight"><pre><span></span><span class="kn">import </span><span class="nc">Html</span> <span class="nv">exposing</span> <span class="p">(</span><span class="nv">div</span><span class="p">,</span> <span class="nv">text</span><span class="p">,</span> <span class="kt">Html</span><span class="p">)</span>
-<span class="kn">import </span><span class="nc">List</span> <span class="nv">exposing</span> <span class="p">(</span><span class="nv">range</span><span class="p">,</span> <span class="nv">repeat</span><span class="p">,</span> <span class="nv">member</span><span class="p">,</span> <span class="nv">length</span><span class="p">,</span> <span class="nv">reverse</span><span class="p">,</span> <span class="nv">map</span><span class="p">,</span> <span class="nv">foldr</span><span class="p">,</span> <span class="nv">foldl</span><span class="p">,</span> <span class="nv">filter</span><span class="p">)</span>
-<span class="kn">import </span><span class="nc">Debug</span> <span class="nv">exposing</span> <span class="p">(</span><span class="nv">toString</span><span class="p">)</span>
-
-<span class="nv">printList</span> <span class="nf">:</span> <span class="kt">List</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">Html</span> <span class="nv">msg</span>
-<span class="nv">printList</span> <span class="nv">lst</span> <span class="nf">=</span>
-  <span class="nv">div</span> <span class="p">[]</span> <span class="p">[</span><span class="nv">text</span> <span class="p">(</span><span class="kt">Debug</span><span class="nf">.</span><span class="nv">toString</span> <span class="nv">lst</span><span class="p">)]</span>
-  
-<span class="nv">printBool</span> <span class="nf">:</span> <span class="kt">Bool</span> <span class="nf">-&gt;</span> <span class="kt">Html</span> <span class="nv">msg</span>
-<span class="nv">printBool</span> <span class="nv">b</span> <span class="nf">=</span>
-  <span class="nv">div</span> <span class="p">[]</span> <span class="p">[</span><span class="nv">text</span> <span class="p">(</span><span class="kt">Debug</span><span class="nf">.</span><span class="nv">toString</span> <span class="nv">b</span><span class="p">)]</span>
-  
-<span class="nv">printInt</span> <span class="nf">:</span> <span class="kt">Int</span> <span class="nf">-&gt;</span> <span class="kt">Html</span> <span class="nv">msg</span>
-<span class="nv">printInt</span> <span class="nv">x</span> <span class="nf">=</span>
-  <span class="nv">div</span> <span class="p">[]</span> <span class="p">[</span><span class="nv">text</span> <span class="p">(</span><span class="kt">Debug</span><span class="nf">.</span><span class="nv">toString</span> <span class="nv">x</span><span class="p">)]</span>  
-  
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-elm notranslate"><div class="highlight"><pre><span></span><span class="nv">double</span> <span class="nv">x</span> <span class="nf">=</span> <span class="nv">x</span> <span class="nf">+</span> <span class="nv">x</span>
-<span class="nv">isEven</span> <span class="nv">x</span> <span class="nf">=</span> <span class="nv">modBy</span> <span class="mi">2</span> <span class="nv">x</span> <span class="nf">==</span> <span class="mi">0</span> <span class="c1">-- even: rest na deling door 2 is 0</span>
-<span class="nv">firstprimes</span> <span class="nf">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">]</span>
+<div class="highlight-elm notranslate"><div class="highlight"><pre><span></span><span class="kn">import </span><span class="nc">Html</span> <span class="nv">exposing</span> <span class="p">(</span><span class="nv">div</span><span class="p">,</span> <span class="nv">p</span><span class="p">,</span> <span class="nv">text</span><span class="p">)</span>
+<span class="kn">import </span><span class="nc">String</span>
 
 <span class="kr">main </span><span class="nf">=</span>
-  <span class="nv">div</span> <span class="p">[]</span> 
-  <span class="p">[</span> <span class="nv">printList</span> <span class="p">(</span> <span class="nv">map</span> <span class="nv">double</span> <span class="nv">firstprimes</span> <span class="p">)</span>
-  <span class="p">,</span> <span class="nv">printList</span> <span class="p">(</span> <span class="nv">map</span> <span class="nv">isEven</span> <span class="p">(</span><span class="nv">range</span> <span class="mi">1</span> <span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
-  <span class="p">,</span> <span class="nv">printList</span> <span class="p">(</span> <span class="nv">filter</span> <span class="nv">isEven</span> <span class="p">(</span><span class="nv">range</span> <span class="mi">1</span> <span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
-  <span class="p">,</span> <span class="nv">printInt</span>  <span class="p">(</span> <span class="nv">foldr</span> <span class="nf">(+)</span> <span class="mi">0</span> <span class="p">(</span><span class="nv">repeat</span> <span class="mi">10</span> <span class="mi">3</span><span class="p">)</span> <span class="p">)</span>
-  <span class="p">,</span> <span class="nv">printInt</span>  <span class="p">(</span> <span class="nv">foldr</span> <span class="nf">(*)</span> <span class="mi">1</span> <span class="p">(</span><span class="nv">range</span> <span class="mi">1</span> <span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
-  <span class="p">]</span>
+   <span class="nv">p</span>  <span class="p">[]</span>  <span class="p">[</span> <span class="nv">text</span> <span class="p">(</span><span class="s">&quot;2 + 3 = &quot;</span> <span class="nf">++</span> <span class="p">(</span><span class="kt">String</span><span class="nf">.</span><span class="nv">fromInt</span><span class="p">(</span> <span class="mi">2</span> <span class="nf">+</span> <span class="mi">3</span> <span class="p">)))]</span>
+
 <span class="c1">-- compile-code</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="elm-div-3"></div></div><script type="application/javascript">
+<div class="output text_html"><div id="elm-div-2"></div></div><script type="application/javascript">
             var defineElm = function(cb) {
                 if (this.Elm) {
                     this.oldElm = this.Elm;
@@ -9349,169 +9216,16 @@ var $elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 			return 3;
 	}
 };
-var $elm$html$Html$div = _VirtualDom_node('div');
-var $author$project$Main$double = function (x) {
-	return x + x;
-};
-var $elm$core$List$foldrHelper = F4(
-	function (fn, acc, ctr, ls) {
-		if (!ls.b) {
-			return acc;
-		} else {
-			var a = ls.a;
-			var r1 = ls.b;
-			if (!r1.b) {
-				return A2(fn, a, acc);
-			} else {
-				var b = r1.a;
-				var r2 = r1.b;
-				if (!r2.b) {
-					return A2(
-						fn,
-						a,
-						A2(fn, b, acc));
-				} else {
-					var c = r2.a;
-					var r3 = r2.b;
-					if (!r3.b) {
-						return A2(
-							fn,
-							a,
-							A2(
-								fn,
-								b,
-								A2(fn, c, acc)));
-					} else {
-						var d = r3.a;
-						var r4 = r3.b;
-						var res = (ctr > 500) ? A3(
-							$elm$core$List$foldl,
-							fn,
-							acc,
-							$elm$core$List$reverse(r4)) : A4($elm$core$List$foldrHelper, fn, acc, ctr + 1, r4);
-						return A2(
-							fn,
-							a,
-							A2(
-								fn,
-								b,
-								A2(
-									fn,
-									c,
-									A2(fn, d, res))));
-					}
-				}
-			}
-		}
-	});
-var $elm$core$List$foldr = F3(
-	function (fn, acc, ls) {
-		return A4($elm$core$List$foldrHelper, fn, acc, 0, ls);
-	});
-var $elm$core$List$filter = F2(
-	function (isGood, list) {
-		return A3(
-			$elm$core$List$foldr,
-			F2(
-				function (x, xs) {
-					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
-				}),
-			_List_Nil,
-			list);
-	});
-var $author$project$Main$firstprimes = _List_fromArray(
-	[2, 3, 5, 7, 11]);
-var $elm$core$Basics$modBy = _Basics_modBy;
-var $author$project$Main$isEven = function (x) {
-	return !A2($elm$core$Basics$modBy, 2, x);
-};
-var $elm$core$List$map = F2(
-	function (f, xs) {
-		return A3(
-			$elm$core$List$foldr,
-			F2(
-				function (x, acc) {
-					return A2(
-						$elm$core$List$cons,
-						f(x),
-						acc);
-				}),
-			_List_Nil,
-			xs);
-	});
+var $elm$html$Html$p = _VirtualDom_node('p');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $elm$core$Debug$toString = _Debug_toString;
-var $author$project$Main$printInt = function (x) {
-	return A2(
-		$elm$html$Html$div,
-		_List_Nil,
-		_List_fromArray(
-			[
-				$elm$html$Html$text(
-				$elm$core$Debug$toString(x))
-			]));
-};
-var $author$project$Main$printList = function (lst) {
-	return A2(
-		$elm$html$Html$div,
-		_List_Nil,
-		_List_fromArray(
-			[
-				$elm$html$Html$text(
-				$elm$core$Debug$toString(lst))
-			]));
-};
-var $elm$core$List$repeatHelp = F3(
-	function (result, n, value) {
-		repeatHelp:
-		while (true) {
-			if (n <= 0) {
-				return result;
-			} else {
-				var $temp$result = A2($elm$core$List$cons, value, result),
-					$temp$n = n - 1,
-					$temp$value = value;
-				result = $temp$result;
-				n = $temp$n;
-				value = $temp$value;
-				continue repeatHelp;
-			}
-		}
-	});
-var $elm$core$List$repeat = F2(
-	function (n, value) {
-		return A3($elm$core$List$repeatHelp, _List_Nil, n, value);
-	});
 var $author$project$Main$main = A2(
-	$elm$html$Html$div,
+	$elm$html$Html$p,
 	_List_Nil,
 	_List_fromArray(
 		[
-			$author$project$Main$printList(
-			A2($elm$core$List$map, $author$project$Main$double, $author$project$Main$firstprimes)),
-			$author$project$Main$printList(
-			A2(
-				$elm$core$List$map,
-				$author$project$Main$isEven,
-				A2($elm$core$List$range, 1, 10))),
-			$author$project$Main$printList(
-			A2(
-				$elm$core$List$filter,
-				$author$project$Main$isEven,
-				A2($elm$core$List$range, 1, 10))),
-			$author$project$Main$printInt(
-			A3(
-				$elm$core$List$foldr,
-				$elm$core$Basics$add,
-				0,
-				A2($elm$core$List$repeat, 10, 3))),
-			$author$project$Main$printInt(
-			A3(
-				$elm$core$List$foldr,
-				$elm$core$Basics$mul,
-				1,
-				A2($elm$core$List$range, 1, 10)))
+			$elm$html$Html$text(
+			'2 + 3 = ' + $elm$core$String$fromInt(2 + 3))
 		]));
 _Platform_export({'Main':{'init':_VirtualDom_init($author$project$Main$main)(0)(0)}});}(this));
 
@@ -9521,57 +9235,46 @@ _Platform_export({'Main':{'init':_VirtualDom_init($author$project$Main$main)(0)(
 
             var obj = new Object();
             defineElm.bind(obj)(function(){
-                var mountNode = document.getElementById('elm-div-3');
+                var mountNode = document.getElementById('elm-div-2');
                 obj.Elm. Main.init({ node: mountNode });
             });
         </script></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">foldr</span></code> en <code class="docutils literal notranslate"><span class="pre">filter</span></code>: voorbeelden van <em>functies als parameter</em>.</p>
-<div class="highlight-elm notranslate"><div class="highlight"><pre><span></span><span class="nv">map</span> <span class="nf">:</span> <span class="p">(</span><span class="nv">a</span> <span class="nf">-&gt;</span> <span class="nv">b</span><span class="p">)</span> <span class="nf">-&gt;</span> <span class="kt">List</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">List</span> <span class="nv">b</span>
-<span class="nv">map</span>      <span class="nv">f</span>         <span class="nv">lst</span>    <span class="nf">=</span> <span class="nf">...</span>
-
-<span class="nv">foldr</span> <span class="nf">:</span> <span class="p">(</span><span class="nv">a</span> <span class="nf">-&gt;</span> <span class="nv">b</span> <span class="nf">-&gt;</span> <span class="nv">b</span><span class="p">)</span> <span class="nf">-&gt;</span> <span class="nv">b</span> <span class="nf">-&gt;</span> <span class="kt">List</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">List</span> <span class="nv">b</span>
-<span class="nv">foldr</span>       <span class="nv">f</span>            <span class="nv">e</span>     <span class="nv">lst</span>    <span class="nf">=</span> <span class="nf">...</span>
-
-<span class="nv">filter</span> <span class="nf">:</span> <span class="p">(</span><span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">Bool</span><span class="p">)</span> <span class="nf">-&gt;</span> <span class="kt">List</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">List</span> <span class="nv">a</span>
-<span class="nv">filter</span>       <span class="nv">f</span>           <span class="nv">lst</span>    <span class="nf">=</span> <span class="nf">...</span>
-</pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">foldr</span></code> en <code class="docutils literal notranslate"><span class="pre">filter</span></code>: veel-voorkomende rekenpatronen,
-geparametriseerd met de eigenlijke berekening (functie).</p>
-<p><code class="docutils literal notranslate"><span class="pre">map</span></code>, <code class="docutils literal notranslate"><span class="pre">foldr</span></code> en <code class="docutils literal notranslate"><span class="pre">filter</span></code> zijn normale Elm-functies:
-deze kun je ook zelf definiëren.</p>
+<div class="section" id="code-meerdere-cellen">
+<h2>Code: meerdere cellen<a class="headerlink" href="#code-meerdere-cellen" title="Permalink to this headline">¶</a></h2>
+<p>Jupyter Notebooks zijn in de eerste plaats gemaakt voor interpreter-talen zoals Python, met tekst-invoer en -uitvoer.
+Elm is in twee opzichten anders: (i) het is een gecompileerde taal; (ii) Elm werkt in een HTML- en SVG-omgeving.</p>
+<blockquote>
+<div><p>Je kunt Elm ook als “repl” gebruiken, met tekst-uitvoer en -invoer. Zie daarvoor <a class="reference internal" href="elm-repl.html"><span class="doc std std-doc">elm-repl notebook</span></a>.</p>
+</div></blockquote>
+<p>De manier waarop Elm in deze notebooks werkt is als volgt:</p>
+<ul class="simple">
+<li><p>bij het uitvoeren van een code-cel wordt de code opgespaard totdat de regel “– compile-code” gevonden wordt. De opgespaarde code wordt dan aangeboden aan de compiler, en als deze correct bevonden is, uitgevoerd in een HTML/SVG-omgeving.</p></li>
+<li><p>na het uitvoeren van een programma begin je weer met een schone lei; er worden geen resultaten van de vorige uitvoering bewaard.</p></li>
+</ul>
+<p>Om te experimenteren met Elm is het dan handiger als een cel een compleet Elm-programma bevat; je kunt het dan aanpassen en uitvoeren, zonder dat je steeds andere cellen hoeft uit te voeren.</p>
+<blockquote>
+<div><p>In de presentaties zijn de programma’s soms over meerdere cellen verdeeld, omdat je een groot programma niet op één slide kunt tonen.</p>
+</div></blockquote>
+<p><strong>Opeenvolgende cellen.</strong> Hieronder zie je een voorbeeld van een Elm-programma dat over meerdere cellen verdeeld is. Deze moet je dan in de goede volgorde uitvoeren, pas bij de laatste cel zie je het resultaat.</p>
+<p><strong>Voer de onderstaande 2 cellen achtereenvolgens uit</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-elm notranslate"><div class="highlight"><pre><span></span><span class="kn">import </span><span class="nc">Html</span> <span class="nv">exposing</span> <span class="p">(</span><span class="nv">div</span><span class="p">,</span> <span class="nv">text</span><span class="p">,</span> <span class="kt">Html</span><span class="p">)</span>
-<span class="kn">import </span><span class="nc">List</span> <span class="nv">exposing</span> <span class="p">(</span><span class="nv">range</span><span class="p">,</span> <span class="nv">repeat</span><span class="p">,</span> <span class="nv">member</span><span class="p">,</span> <span class="nv">length</span><span class="p">,</span> <span class="nv">reverse</span><span class="p">,</span> <span class="nv">map</span><span class="p">,</span> <span class="nv">foldr</span><span class="p">,</span> <span class="nv">foldl</span><span class="p">,</span> <span class="nv">filter</span><span class="p">)</span>
-<span class="kn">import </span><span class="nc">Debug</span> <span class="nv">exposing</span> <span class="p">(</span><span class="nv">toString</span><span class="p">)</span>
+<div class="highlight-elm notranslate"><div class="highlight"><pre><span></span><span class="kn">import </span><span class="nc">Html</span> <span class="nv">exposing</span> <span class="p">(</span><span class="nv">div</span><span class="p">,</span> <span class="nv">p</span><span class="p">,</span> <span class="nv">text</span><span class="p">)</span>
+<span class="kn">import </span><span class="nc">Html.Attributes</span> <span class="nv">exposing</span> <span class="p">(</span><span class="nv">style</span><span class="p">)</span>
+<span class="kn">import </span><span class="nc">String</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-elm notranslate"><div class="highlight"><pre><span></span><span class="kr">main </span><span class="nf">=</span>
+  <span class="nv">div</span> <span class="p">[</span><span class="nv">style</span> <span class="s">&quot;color&quot;</span> <span class="s">&quot;blue&quot;</span><span class="p">]</span>
+    <span class="p">[</span>  <span class="nv">p</span>  <span class="p">[]</span>  <span class="p">[</span> <span class="nv">text</span> <span class="p">(</span><span class="s">&quot;2 + 3 = &quot;</span> <span class="nf">++</span> <span class="p">(</span><span class="kt">String</span><span class="nf">.</span><span class="nv">fromInt</span><span class="p">(</span><span class="mi">2</span> <span class="nf">+</span> <span class="mi">3</span><span class="p">)))]</span>
+    <span class="p">]</span> 
 
-<span class="nv">printList</span> <span class="nf">:</span> <span class="kt">List</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">Html</span> <span class="nv">msg</span>
-<span class="nv">printList</span> <span class="nv">lst</span> <span class="nf">=</span>
-  <span class="nv">div</span> <span class="p">[]</span> <span class="p">[</span><span class="nv">text</span> <span class="p">(</span><span class="kt">Debug</span><span class="nf">.</span><span class="nv">toString</span> <span class="nv">lst</span><span class="p">)]</span>
-  
-<span class="nv">printBool</span> <span class="nf">:</span> <span class="kt">Bool</span> <span class="nf">-&gt;</span> <span class="kt">Html</span> <span class="nv">msg</span>
-<span class="nv">printBool</span> <span class="nv">b</span> <span class="nf">=</span>
-  <span class="nv">div</span> <span class="p">[]</span> <span class="p">[</span><span class="nv">text</span> <span class="p">(</span><span class="kt">Debug</span><span class="nf">.</span><span class="nv">toString</span> <span class="nv">b</span><span class="p">)]</span>
-  
-<span class="nv">printInt</span> <span class="nf">:</span> <span class="kt">Int</span> <span class="nf">-&gt;</span> <span class="kt">Html</span> <span class="nv">msg</span>
-<span class="nv">printInt</span> <span class="nv">x</span> <span class="nf">=</span>
-  <span class="nv">div</span> <span class="p">[]</span> <span class="p">[</span><span class="nv">text</span> <span class="p">(</span><span class="kt">Debug</span><span class="nf">.</span><span class="nv">toString</span> <span class="nv">x</span><span class="p">)]</span>  
-  
-
-<span class="nv">double</span> <span class="nv">x</span> <span class="nf">=</span> <span class="nv">x</span> <span class="nf">+</span> <span class="nv">x</span>
-<span class="nv">isEven</span> <span class="nv">x</span> <span class="nf">=</span> <span class="nv">modBy</span> <span class="mi">2</span> <span class="nv">x</span> <span class="nf">==</span> <span class="mi">0</span> <span class="c1">-- even: rest na deling door 2 is 0</span>
-<span class="nv">firstprimes</span> <span class="nf">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">]</span>
-
-<span class="kr">main </span><span class="nf">=</span>
-  <span class="nv">div</span> <span class="p">[]</span> 
-  <span class="p">[</span> <span class="nv">printList</span> <span class="p">(</span> <span class="nv">map</span> <span class="nv">double</span> <span class="nv">firstprimes</span> <span class="p">)</span>
-  <span class="p">,</span> <span class="nv">printList</span> <span class="p">(</span> <span class="nv">map</span> <span class="nv">isEven</span> <span class="p">(</span><span class="nv">range</span> <span class="mi">1</span> <span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
-  <span class="p">,</span> <span class="nv">printList</span> <span class="p">(</span> <span class="nv">filter</span> <span class="nv">isEven</span> <span class="p">(</span><span class="nv">range</span> <span class="mi">1</span> <span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
-  <span class="p">,</span> <span class="nv">printInt</span>  <span class="p">(</span> <span class="nv">foldr</span> <span class="nf">(+)</span> <span class="mi">0</span> <span class="p">(</span><span class="nv">repeat</span> <span class="mi">10</span> <span class="mi">3</span><span class="p">)</span> <span class="p">)</span>
-  <span class="p">,</span> <span class="nv">printInt</span>  <span class="p">(</span> <span class="nv">foldr</span> <span class="nf">(*)</span> <span class="mi">1</span> <span class="p">(</span><span class="nv">range</span> <span class="mi">1</span> <span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
-  <span class="p">]</span>
 <span class="c1">-- compile-code</span>
 </pre></div>
 </div>
@@ -13991,168 +13694,27 @@ var $elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 	}
 };
 var $elm$html$Html$div = _VirtualDom_node('div');
-var $author$project$Main$double = function (x) {
-	return x + x;
-};
-var $elm$core$List$foldrHelper = F4(
-	function (fn, acc, ctr, ls) {
-		if (!ls.b) {
-			return acc;
-		} else {
-			var a = ls.a;
-			var r1 = ls.b;
-			if (!r1.b) {
-				return A2(fn, a, acc);
-			} else {
-				var b = r1.a;
-				var r2 = r1.b;
-				if (!r2.b) {
-					return A2(
-						fn,
-						a,
-						A2(fn, b, acc));
-				} else {
-					var c = r2.a;
-					var r3 = r2.b;
-					if (!r3.b) {
-						return A2(
-							fn,
-							a,
-							A2(
-								fn,
-								b,
-								A2(fn, c, acc)));
-					} else {
-						var d = r3.a;
-						var r4 = r3.b;
-						var res = (ctr > 500) ? A3(
-							$elm$core$List$foldl,
-							fn,
-							acc,
-							$elm$core$List$reverse(r4)) : A4($elm$core$List$foldrHelper, fn, acc, ctr + 1, r4);
-						return A2(
-							fn,
-							a,
-							A2(
-								fn,
-								b,
-								A2(
-									fn,
-									c,
-									A2(fn, d, res))));
-					}
-				}
-			}
-		}
-	});
-var $elm$core$List$foldr = F3(
-	function (fn, acc, ls) {
-		return A4($elm$core$List$foldrHelper, fn, acc, 0, ls);
-	});
-var $elm$core$List$filter = F2(
-	function (isGood, list) {
-		return A3(
-			$elm$core$List$foldr,
-			F2(
-				function (x, xs) {
-					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
-				}),
-			_List_Nil,
-			list);
-	});
-var $author$project$Main$firstprimes = _List_fromArray(
-	[2, 3, 5, 7, 11]);
-var $elm$core$Basics$modBy = _Basics_modBy;
-var $author$project$Main$isEven = function (x) {
-	return !A2($elm$core$Basics$modBy, 2, x);
-};
-var $elm$core$List$map = F2(
-	function (f, xs) {
-		return A3(
-			$elm$core$List$foldr,
-			F2(
-				function (x, acc) {
-					return A2(
-						$elm$core$List$cons,
-						f(x),
-						acc);
-				}),
-			_List_Nil,
-			xs);
-	});
+var $elm$html$Html$p = _VirtualDom_node('p');
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $elm$core$Debug$toString = _Debug_toString;
-var $author$project$Main$printInt = function (x) {
-	return A2(
-		$elm$html$Html$div,
-		_List_Nil,
-		_List_fromArray(
-			[
-				$elm$html$Html$text(
-				$elm$core$Debug$toString(x))
-			]));
-};
-var $author$project$Main$printList = function (lst) {
-	return A2(
-		$elm$html$Html$div,
-		_List_Nil,
-		_List_fromArray(
-			[
-				$elm$html$Html$text(
-				$elm$core$Debug$toString(lst))
-			]));
-};
-var $elm$core$List$repeatHelp = F3(
-	function (result, n, value) {
-		repeatHelp:
-		while (true) {
-			if (n <= 0) {
-				return result;
-			} else {
-				var $temp$result = A2($elm$core$List$cons, value, result),
-					$temp$n = n - 1,
-					$temp$value = value;
-				result = $temp$result;
-				n = $temp$n;
-				value = $temp$value;
-				continue repeatHelp;
-			}
-		}
-	});
-var $elm$core$List$repeat = F2(
-	function (n, value) {
-		return A3($elm$core$List$repeatHelp, _List_Nil, n, value);
-	});
 var $author$project$Main$main = A2(
 	$elm$html$Html$div,
-	_List_Nil,
 	_List_fromArray(
 		[
-			$author$project$Main$printList(
-			A2($elm$core$List$map, $author$project$Main$double, $author$project$Main$firstprimes)),
-			$author$project$Main$printList(
+			A2($elm$html$Html$Attributes$style, 'color', 'blue')
+		]),
+	_List_fromArray(
+		[
 			A2(
-				$elm$core$List$map,
-				$author$project$Main$isEven,
-				A2($elm$core$List$range, 1, 10))),
-			$author$project$Main$printList(
-			A2(
-				$elm$core$List$filter,
-				$author$project$Main$isEven,
-				A2($elm$core$List$range, 1, 10))),
-			$author$project$Main$printInt(
-			A3(
-				$elm$core$List$foldr,
-				$elm$core$Basics$add,
-				0,
-				A2($elm$core$List$repeat, 10, 3))),
-			$author$project$Main$printInt(
-			A3(
-				$elm$core$List$foldr,
-				$elm$core$Basics$mul,
-				1,
-				A2($elm$core$List$range, 1, 10)))
+			$elm$html$Html$p,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$text(
+					'2 + 3 = ' + $elm$core$String$fromInt(2 + 3))
+				]))
 		]));
 _Platform_export({'Main':{'init':_VirtualDom_init($author$project$Main$main)(0)(0)}});}(this));
 
@@ -14167,6 +13729,47 @@ _Platform_export({'Main':{'init':_VirtualDom_init($author$project$Main$main)(0)(
             });
         </script></div>
 </div>
+</div>
+<div class="section" id="markdown-cellen">
+<h2>Markdown cellen<a class="headerlink" href="#markdown-cellen" title="Permalink to this headline">¶</a></h2>
+<p>Je kunt de tekst in een Markdown-cel aanpassen door deze in <strong>edit-mode</strong> te brengen.
+Dit doe je door een dubbel-klik op de cel.
+Je herkent deze mode aan het gebruik van een ander lettertype.</p>
+<p><strong>Pas de inhoud van deze cel aan</strong></p>
+<p>Een Markdown-cell breng je van edit-mode naar de geformatteerde tekst-mode door deze cel uit te voeren.
+Je <em>voert een cel uit</em> (<em>Run</em>) door op het pijl-symbool bovenin te klikken, of door SHIFT-RETURN.</p>
+<p><strong>Voer de cel hierboven uit om deze weer in geformatteerde tekst-mode te brengen.</strong></p>
+<ul class="simple">
+<li><p>Het uitvoeren van een Markdown-cel resulteert in het formatteren van de tekst.</p></li>
+<li><p>Het uitvoeren van een Code-cel resulteert in het uitvoeren van de code.</p></li>
+</ul>
+</div>
+<div class="section" id="kernel">
+<h2>Kernel<a class="headerlink" href="#kernel" title="Permalink to this headline">¶</a></h2>
+<p>Een Notebook gebruikt een <em>Kernel</em>: dat is de interpreter of compiler die de code-cellen verwerkt. Soms komt deze Kernel in een onbruikbare toestand; of je wilt echt met een schone lei beginnen. In zo’n geval kun je de Kernel opnieuw opstarten: zie het Kernel-menu bovenin. (Ik gebruik meestal: Restart Kernel and Cleat all outputs: een schone lei.)</p>
+<p>Voor Elm gebruiken we de Elm-kernel; voor elm-repl de Python-kernel, met in de cellen een “bash-shell”. In dat laatste geval kun je commandoregel-opdrachten geven.</p>
+</div>
+<div class="section" id="tussenvoegen-en-verwijderen-van-cellen">
+<h2>Tussenvoegen en verwijderen van cellen<a class="headerlink" href="#tussenvoegen-en-verwijderen-van-cellen" title="Permalink to this headline">¶</a></h2>
+<p>Je kunt een cel toevoegen na de huidge cel met het <code class="docutils literal notranslate"><span class="pre">+</span></code>-symbool in het interface bovenin.</p>
+<p>De huidige cel verwijder je met het schaar-symbool in het interface bovenin.
+(Met Z -undo cell operation- maak je dat weer ongedaan.)</p>
+<p>Je kunt een cel verplaatsen met behulp van het handvat in de linker kantlijn.
+(Dit werkt alleen voor de nieuwere JupyterLab, niet voor Jupyter Notebook.)</p>
+</div>
+<div class="section" id="samenvatting">
+<h2>Samenvatting<a class="headerlink" href="#samenvatting" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>een notebook bestaat uit cellen; een cel kan <em>tekst</em> bevatten (Markdown), zoals deze cel, of <em>code</em>.</p></li>
+<li><p>je voert een cel uit door deze te selecteren (cursor in de cel), en vervolgens SHIFT-RETURN in te toetsen.
+Ook het pijltje in de opdrachtenbalk hierboven kun je gebruiken.</p></li>
+<li><p>onder de cel zie je dan de uitvoer van deze opdracht.</p></li>
+<li><p>om problemen te voorkomen voer je cellen alleen uit <em>in de volgorde in het notebook</em>.</p></li>
+<li><p>je kunt eventueel opnieuw beginnen door de “Kernel” opnieuw te starten (via het cirkeltje, als bij een reload in de browser).</p></li>
+<li><p>zie voor meer informatie: help, en <a class="reference external" href="https://www.dataquest.io/blog/jupyter-notebook-tutorial/">tutorial</a></p></li>
+</ul>
+<p>De meeste code-cellen kun je zo uitvoeren; probeer de code en de uitvoer te begrijpen.
+Bij sommige opdrachten moet je de code aanpassen, en dan de cel uitvoeren.</p>
 </div>
 </div>
 
@@ -14198,8 +13801,7 @@ _Platform_export({'Main':{'init':_VirtualDom_init($author$project$Main$main)(0)(
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="functies-1.html" title="previous page">Functies (1)</a>
-    <a class='right-next' id="next-link" href="lijsten-2.html" title="next page">Lijsten (2)</a>
+    <a class='left-prev' id="prev-link" href="elm-repl.html" title="previous page">Elm repl</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

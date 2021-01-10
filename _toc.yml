@@ -3,9 +3,20 @@
 #
 
 - file: inleiding
-- file: functies-1
-- file: lijsten-1
-- file: lijsten-2
-- file: functies-2
 
+- part: Functies en lijsten
+  chapters:
+    - file: functies-1
+    - file: lijsten-1
+    - file: lijsten-2
+    - file: functies-2
+    
+- part: Bomen
+  chapters:
+    - file: bomen
+
+- part: Appendix
+  chapters:
+    - file: elm-repl
+    - file: inleiding-jupyter
 

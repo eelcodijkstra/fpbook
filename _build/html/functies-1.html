@@ -95,6 +95,11 @@
   </a>
  </li>
 </ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Functies en lijsten
+ </span>
+</p>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
@@ -114,6 +119,35 @@
  <li class="toctree-l1">
   <a class="reference internal" href="functies-2.html">
    Functies (2)
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Bomen
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="bomen.html">
+   Bomen
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="elm-repl.html">
+   Elm repl
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inleiding-jupyter.html">
+   Inleiding Jupyter Notebooks
   </a>
  </li>
 </ul>
@@ -220,6 +254,11 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functie-aanroep">
+   Functie-aanroep
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#functie-definitie">
    Functie-definitie
   </a>
@@ -262,7 +301,9 @@
                 
   <div class="section" id="functies-1">
 <h1>Functies (1)<a class="headerlink" href="#functies-1" title="Permalink to this headline">¶</a></h1>
-<p><strong>Onderwerpen:</strong> functie-definitie; functie-aanroep; typering van functies; Currying; anonieme functies.</p>
+<p><strong>Onderwerpen:</strong> <em>functie-definitie; functie-aanroep; rekenen met functies; typering van functies; Currying; anonieme functies.</em></p>
+<div class="section" id="functie-aanroep">
+<h2>Functie-aanroep<a class="headerlink" href="#functie-aanroep" title="Permalink to this headline">¶</a></h2>
 <p>Een functie-aanroep heeft de vorm: <code class="docutils literal notranslate"><span class="pre">fname</span> <span class="pre">par1</span> <span class="pre">par2</span> <span class="pre">...</span></code>: de naam van de functie gevolgd door de parameter-expressies.
 In tegenstelling tot veel andere programmeertalen worden hierbij geen haakjes en komma’s gebruikt.
 Soms zijn haakjes nodig omdat functie-aanroep sterker bindt dan optellen of vermenigvuldigen, of omdat een expressie van rechts naar links uitgerekend moet worden.</p>
@@ -275,6 +316,7 @@ Soms zijn haakjes nodig omdat functie-aanroep sterker bindt dan optellen of verm
 </pre></div>
 </div>
 <p>Zonder haakjes zou <code class="docutils literal notranslate"><span class="pre">succ</span> <span class="pre">double</span> <span class="pre">4</span></code> verwerkt worden als <code class="docutils literal notranslate"><span class="pre">(succ</span> <span class="pre">double)</span> <span class="pre">4</span></code> (wat een foutmelding geeft).</p>
+</div>
 <div class="section" id="functie-definitie">
 <h2>Functie-definitie<a class="headerlink" href="#functie-definitie" title="Permalink to this headline">¶</a></h2>
 <p>Voordat je een functie kunt gebruiken moet deze gedefinieerd zijn.
@@ -292,7 +334,7 @@ niet bij de aanroep.</p>
 </pre></div>
 </div>
 <p>De betekenis van zo’n definitie is dat je een functie-aanroep kunt vervangen door het rechterlid van de definitie (de “body”), waarbij je de parameternamen vervangt door de parameter-waarden in de aanroep.</p>
-<p>Merk op dat hier, net als bij de aanroep, geen haakjes gebruikt worden.</p>
+<p>Merk op dat in de definitie, net als bij de aanroep, geen haakjes gebruikt worden.</p>
 </div>
 <div class="section" id="rekenen-met-functies">
 <h2>Rekenen met functies<a class="headerlink" href="#rekenen-met-functies" title="Permalink to this headline">¶</a></h2>
@@ -334,6 +376,8 @@ Het gebruik hiervan bij de lastige functies die we later tegenkomen helpt om de 
 </div>
 <div class="section" id="typering-van-functies">
 <h2>Typering van functies<a class="headerlink" href="#typering-van-functies" title="Permalink to this headline">¶</a></h2>
+<p>Elm gebruikt <em>statische typering</em>: het type van elke waarde ligt vast in de programmatekst, en kan door de Elm-compiler gecontroleerd worden voordat het programma uitgevoerd wordt.</p>
+<p>Om de compiler en de lezer te helpen bij deze controle, en om betere foutmeldingen te krijgen, is het verstandig om bij de functie-definitie ook de types van de parameters en van het resultaat te vermelden. Deze typering geef je dan in een regel vóór de eigenlijk functie-definitie. Enkele voorbeelden:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">double</span><span class="p">:</span> <span class="n">Int</span> <span class="o">-&gt;</span> <span class="n">Int</span>
 <span class="n">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
 
@@ -342,7 +386,9 @@ Het gebruik hiervan bij de lastige functies die we later tegenkomen helpt om de 
 
 </pre></div>
 </div>
-<p>Niet verplicht, maar wel handig: betere foutmeldingen</p>
+<p>Hierin is <code class="docutils literal notranslate"><span class="pre">double</span></code> een functie die gegeven een <code class="docutils literal notranslate"><span class="pre">Int</span></code>-waarde (een geheel getal) een <code class="docutils literal notranslate"><span class="pre">Int</span></code>-waarde oplevert.
+<code class="docutils literal notranslate"><span class="pre">max</span></code> heeft twee <code class="docutils literal notranslate"><span class="pre">Int</span></code>-parameters, en levert een <code class="docutils literal notranslate"><span class="pre">Int</span></code> op.</p>
+<p>Merk op dat de notatie voor meerdere parameters suggereert dat er sprake is van meerdere functies. Hoe dat zit leggen we hieronder uit.</p>
 </div>
 <div class="section" id="currying">
 <h2>Currying<a class="headerlink" href="#currying" title="Permalink to this headline">¶</a></h2>
@@ -350,12 +396,20 @@ Het gebruik hiervan bij de lastige functies die we later tegenkomen helpt om de 
 <span class="nb">max</span> <span class="n">x</span> <span class="n">y</span> <span class="o">=</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">y</span> <span class="n">then</span> <span class="n">x</span> <span class="k">else</span> <span class="n">y</span>
 </pre></div>
 </div>
-<p>Aanroep van max met 1 parameter: levert functie-waarde op!</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">max3</span> <span class="o">=</span> <span class="nb">max</span> <span class="mi">3</span> <span class="o">--</span> <span class="n">function</span> <span class="n">Int</span> <span class="o">-&gt;</span> <span class="n">Int</span>
-
-<span class="n">max3</span> <span class="mi">12</span>      <span class="o">--</span> <span class="o">&gt;</span> <span class="mi">12</span>
+<p>Het type van <code class="docutils literal notranslate"><span class="pre">max</span></code> is: <code class="docutils literal notranslate"><span class="pre">Int</span> <span class="pre">-&gt;</span> <span class="pre">Int</span> <span class="pre">-&gt;</span> <span class="pre">Int</span></code>. De <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> is rechts-associatief, dit moet je dus lezen als: <code class="docutils literal notranslate"><span class="pre">Int</span> <span class="pre">-&gt;</span> <span class="pre">(Int</span> <span class="pre">-&gt;</span> <span class="pre">Int)</span></code>.
+Met andere woorden: <code class="docutils literal notranslate"><span class="pre">max</span></code> is een functie met één parameter die een functie met één parameter als resultaat heeft.</p>
+<p>Dit blijkt ook inderdaad zo te zijn: als je <code class="docutils literal notranslate"><span class="pre">max</span></code> met één parameter aanroept, is het resultaat een functie. (Probeer dit zelf uit in <code class="docutils literal notranslate"><span class="pre">elm</span> <span class="pre">repl</span></code>.)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">max3</span> <span class="o">=</span> <span class="nb">max</span> <span class="mi">3</span>        <span class="o">--</span> <span class="n">function</span> <span class="p">:</span> <span class="n">Int</span> <span class="o">-&gt;</span> <span class="n">Int</span>
 </pre></div>
 </div>
+<p>De functie <code class="docutils literal notranslate"><span class="pre">max3</span></code> die we zo als resultaat gekregen hebben kunnen de de volgende parameter aanbieden, waarmee we het uiteindelijke (<code class="docutils literal notranslate"><span class="pre">Int</span></code>) resultaat krijgen.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">max3</span></code> is een voorbeeld van <em>partiële evaluatie</em>: dit is de functie <code class="docutils literal notranslate"><span class="pre">max3</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">if</span> <span class="pre">3</span> <span class="pre">&gt;=y</span> <span class="pre">then</span> <span class="pre">3</span> <span class="pre">else</span> <span class="pre">y</span></code>.</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">max3</span> <span class="mi">12</span>      <span class="o">--</span> <span class="o">&gt;</span> <span class="mi">12</span>
+</pre></div>
+</div>
+<p>Met andere woorden: de aanroep <code class="docutils literal notranslate"><span class="pre">max</span> <span class="pre">3</span> <span class="pre">12</span></code> moeten we lezen als <code class="docutils literal notranslate"><span class="pre">(max</span> <span class="pre">3)</span> <span class="pre">12</span></code>, waarbij <code class="docutils literal notranslate"><span class="pre">(max</span> <span class="pre">3)</span></code> een functie oplevert die de <code class="docutils literal notranslate"><span class="pre">12</span></code> verwerkt - tot het resultaat <code class="docutils literal notranslate"><span class="pre">12</span></code>. Op deze manier kunnen we alle functies met meerdere parameters schrijven als functies van 1 parameter. Deze aanpak heet wel <em>Currying</em>, naar de logicus <em>Haskell Curry</em>.</p>
 </div>
 <div class="section" id="anonieme-functies">
 <h2>Anonieme functies<a class="headerlink" href="#anonieme-functies" title="Permalink to this headline">¶</a></h2>
@@ -4936,8 +4990,8 @@ _Platform_export({'Main':{'init':_VirtualDom_init($author$project$Main$main)(0)(
         </script></div>
 </div>
 <p>Op basis van de bovenstaande uitleg over functies is de functie <code class="docutils literal notranslate"><span class="pre">bulletlist</span></code> al wat beter te begrijpen:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bulletlist</span> <span class="n">attrs</span> <span class="n">lst</span> <span class="o">=</span>
-  <span class="n">ul</span> <span class="n">attrs</span> <span class="p">(</span><span class="nb">map</span> <span class="p">(</span>\<span class="n">elt</span> <span class="o">-&gt;</span> <span class="n">li</span> <span class="p">[]</span> <span class="p">[</span><span class="n">text</span> <span class="n">elt</span><span class="p">])</span> <span class="n">lst</span><span class="p">)</span>
+<div class="highlight-elm notranslate"><div class="highlight"><pre><span></span><span class="nv">bulletlist</span> <span class="nv">attrs</span> <span class="nv">lst</span> <span class="nf">=</span>
+  <span class="nv">ul</span> <span class="nv">attrs</span> <span class="p">(</span><span class="nv">map</span> <span class="p">(</span><span class="nf">\</span><span class="nv">elt</span> <span class="nf">-&gt;</span> <span class="nv">li</span> <span class="p">[]</span> <span class="p">[</span><span class="nv">text</span> <span class="nv">elt</span><span class="p">])</span> <span class="nv">lst</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">

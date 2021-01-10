@@ -1,7 +1,9 @@
 # Functies (1)
 
-**Onderwerpen:** functie-definitie; functie-aanroep; typering van functies; Currying; anonieme functies.
+**Onderwerpen:** *functie-definitie; functie-aanroep; rekenen met functies; typering van functies; Currying; anonieme functies.*
 
+
+## Functie-aanroep
 
 Een functie-aanroep heeft de vorm: `fname par1 par2 ...`: de naam van de functie gevolgd door de parameter-expressies.
 In tegenstelling tot veel andere programmeertalen worden hierbij geen haakjes en komma's gebruikt.
@@ -41,7 +43,7 @@ succ x = x + 1
 
 De betekenis van zo'n definitie is dat je een functie-aanroep kunt vervangen door het rechterlid van de definitie (de "body"), waarbij je de parameternamen vervangt door de parameter-waarden in de aanroep.
 
-Merk op dat hier, net als bij de aanroep, geen haakjes gebruikt worden.
+Merk op dat in de definitie, net als bij de aanroep, geen haakjes gebruikt worden.
 
 ## Rekenen met functies
 
@@ -88,6 +90,10 @@ We gebruiken hieronder de functie: `max x y = if x >= y then x else y`.
 
 ## Typering van functies
 
+Elm gebruikt *statische typering*: het type van elke waarde ligt vast in de programmatekst, en kan door de Elm-compiler gecontroleerd worden voordat het programma uitgevoerd wordt.
+
+Om de compiler en de lezer te helpen bij deze controle, en om betere foutmeldingen te krijgen, is het verstandig om bij de functie-definitie ook de types van de parameters en van het resultaat te vermelden. Deze typering geef je dan in een regel vóór de eigenlijk functie-definitie. Enkele voorbeelden:
+
 ```
 double: Int -> Int
 double x = x + x
@@ -97,7 +103,10 @@ max x y = if x >= y then x else y
 
 ```
 
-Niet verplicht, maar wel handig: betere foutmeldingen
+Hierin is `double` een functie die gegeven een `Int`-waarde (een geheel getal) een `Int`-waarde oplevert.
+`max` heeft twee `Int`-parameters, en levert een `Int` op.
+
+Merk op dat de notatie voor meerdere parameters suggereert dat er sprake is van meerdere functies. Hoe dat zit leggen we hieronder uit.
 
 ## Currying 
 
@@ -106,13 +115,24 @@ max: Int -> (Int -> Int)
 max x y = if x >= y then x else y
 ```
 
-Aanroep van max met 1 parameter: levert functie-waarde op!
+Het type van `max` is: `Int -> Int -> Int`. De `->` is rechts-associatief, dit moet je dus lezen als: `Int -> (Int -> Int)`.
+Met andere woorden: `max` is een functie met één parameter die een functie met één parameter als resultaat heeft.
+
+Dit blijkt ook inderdaad zo te zijn: als je `max` met één parameter aanroept, is het resultaat een functie. (Probeer dit zelf uit in `elm repl`.)
 
 ```
-max3 = max 3 -- function Int -> Int
+max3 = max 3        -- function : Int -> Int
+```
 
+De functie `max3` die we zo als resultaat gekregen hebben kunnen de de volgende parameter aanbieden, waarmee we het uiteindelijke (`Int`) resultaat krijgen.
+
+> `max3` is een voorbeeld van *partiële evaluatie*: dit is de functie `max3 y = if 3 >=y then 3 else y`.
+
+```
 max3 12      -- > 12
 ```
+
+Met andere woorden: de aanroep `max 3 12` moeten we lezen als `(max 3) 12`, waarbij `(max 3)` een functie oplevert die de `12` verwerkt - tot het resultaat `12`. Op deze manier kunnen we alle functies met meerdere parameters schrijven als functies van 1 parameter. Deze aanpak heet wel *Currying*, naar de logicus *Haskell Curry*.
 
 ## Anonieme functies
 
@@ -150,7 +170,7 @@ main =
 
 Op basis van de bovenstaande uitleg over functies is de functie `bulletlist` al wat beter te begrijpen: 
 
-```
+```elm
 bulletlist attrs lst =
   ul attrs (map (\elt -> li [] [text elt]) lst)
 ```

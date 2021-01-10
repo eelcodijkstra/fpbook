@@ -91,10 +91,29 @@ main =
 ```{toctree}
 :hidden:
 :titlesonly:
-
+:caption: Functies en lijsten
 
 functies-1
 lijsten-1
 lijsten-2
 functies-2
+```
+
+
+```{toctree}
+:hidden:
+:titlesonly:
+:caption: Bomen
+
+bomen
+```
+
+
+```{toctree}
+:hidden:
+:titlesonly:
+:caption: Appendix
+
+elm-repl
+inleiding-jupyter
 ```

@@ -1,0 +1,509 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elm repl &#8212; Functioneel programmeren in Elm</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Inleiding Jupyter Notebooks" href="inleiding-jupyter.html" />
+    <link rel="prev" title="Bomen" href="bomen.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Functioneel programmeren in Elm</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="inleiding.html">
+   Inleiding
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Functies en lijsten
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="functies-1.html">
+   Functies (1)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lijsten-1.html">
+   Lijsten (1)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lijsten-2.html">
+   Lijsten (2)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functies-2.html">
+   Functies (2)
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Bomen
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="bomen.html">
+   Bomen
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Elm repl
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inleiding-jupyter.html">
+   Inleiding Jupyter Notebooks
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/elm-repl.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/eelcodijkstra/fpbook"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/eelcodijkstra/fpbook/issues/new?title=Issue%20on%20page%20%2Felm-repl.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/eelcodijkstra/fpbook/main?urlpath=tree/elm-repl.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#voorbeeld">
+   Voorbeeld
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#opdrachten">
+   Opdrachten
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="elm-repl">
+<h1>Elm repl<a class="headerlink" href="#elm-repl" title="Permalink to this headline">¶</a></h1>
+<p>“repl” staat voor “read-eval-print-loop”: dit is de typische loop van een interpreter, zoals je dat misschien kent van Python.</p>
+<p>Hoewel Elm een gecompileerde taal is, is er ook voor Elm een “repl”-programma beschikbaar.
+Dit kun je in de commandoregel van Linux, OS X e.d. activeren, als je elm geïnstalleerd hebt.</p>
+<p>Hoewel we voor Jupyter Notebook (nog) geen geschikte elm-repl hebben, kun je hier in de Jupyter omgeving op verschillende manieren mee aan de slag:</p>
+<ul class="simple">
+<li><p>in dit (Python) notebook kun je in een cel een shell-opdracht geven, waarin je vervolgens “elm repl” kunt aanroepen. In de regels daarna kun je de opdrachten geven die je anders interactief zou geven. Je voert deze uit door de cel uit te voeren (met het “Run” pijltje bovenin, of met Shift-Return). Zie de voorbeelden verderop.</p></li>
+<li><p>je kunt in Jupyter een Terminal-venster openen (rechts boven onder “New”), waar je de opdracht “elm repl” kunt geven. Daarna kun je interactief met Elm aan de slag. Na elke Return verwerkt de interpreter je invoer, totdat deze uitgevoerd kan worden; dan krijg je een resultaat en een nieuwe prompt (<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>).</p></li>
+</ul>
+<p>Enkele dingen om op te letten:</p>
+<ul class="simple">
+<li><p>de prompt van de elm-repl is <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>; als je als prompt <code class="docutils literal notranslate"><span class="pre">|</span></code> krijgt, is dat een teken dat de vorige opdracht volgens elm nog niet compleet is. Dit kun je bijvoorbeeld gebruiken om een functie-definitie over meerdere regels in te voeren. Je moet zo’n meer-regelige definitie wel afsluiten met een lege regel (net als in de interactieve repl).</p></li>
+<li><p>elke cel in dit notebook gebruikt een verse elm-interpreter. Je kunt dus niet in de ene cel een functie definiëren die je in de volgende cel gebruikt.</p></li>
+<li><p>in de repl-omgeving heb je geen HTML uitvoer tot je beschikking. Gebruik daarvoor een Elm-notebook.</p></li>
+</ul>
+<div class="section" id="voorbeeld">
+<h2>Voorbeeld<a class="headerlink" href="#voorbeeld" title="Permalink to this headline">¶</a></h2>
+<p>Hieronder een voorbeeld, met een functie-definitie en een functie-aanroep. De extra tekens <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> en <code class="docutils literal notranslate"><span class="pre">|</span></code> die je in de uitvoer ziet, zijn de prompts die nu een beetje als mosterd na de maaltijd komen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+elm repl
+
+sqr : Int -&gt; Int
+sqr x = x * x
+
+sqr(13)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---- <span class=" -Color -Color-Cyan">Elm 0.19.1</span> ----------------------------------------------------------------
+Say :help for help and :exit to exit! More at &lt;https://elm-lang.org/0.19.1/repl&gt;
+--------------------------------------------------------------------------------
+&gt; &gt; | | <span class=" -Color -Color-Cyan">&lt;function&gt;</span> : Int -&gt; Int
+&gt; 169 : Int
+&gt; 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zoals eerder gezegd moet je alle elementen die je gebruikt (imports, functies) in dezelfde cel beschreven worden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+elm repl
+
+import List exposing (..)
+
+sqr : Int -&gt; Int
+sqr x = x * x
+
+List.map sqr [1,2,3]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---- <span class=" -Color -Color-Cyan">Elm 0.19.1</span> ----------------------------------------------------------------
+Say :help for help and :exit to exit! More at &lt;https://elm-lang.org/0.19.1/repl&gt;
+--------------------------------------------------------------------------------
+&gt; &gt; &gt; &gt; | | <span class=" -Color -Color-Cyan">&lt;function&gt;</span> : Int -&gt; Int
+&gt; [1,4,9] : List Int
+&gt; 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wat is het type van de functie <code class="docutils literal notranslate"><span class="pre">List.foldr</span></code>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+elm repl
+
+import List
+
+List.foldr
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>---- <span class=" -Color -Color-Cyan">Elm 0.19.1</span> ----------------------------------------------------------------
+Say :help for help and :exit to exit! More at &lt;https://elm-lang.org/0.19.1/repl&gt;
+--------------------------------------------------------------------------------
+&gt; &gt; &gt; &gt; <span class=" -Color -Color-Cyan">&lt;function&gt;</span> : (a -&gt; b -&gt; b) -&gt; b -&gt; List a -&gt; b
+&gt; 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="opdrachten">
+<h2>Opdrachten<a class="headerlink" href="#opdrachten" title="Permalink to this headline">¶</a></h2>
+<p>We geven hier enkele opdrachten om met de repl uit te voeren.</p>
+<ol class="simple">
+<li><p>definieer een functie voor het uitrekenen van het minimum van twee getallen, en demonstreer deze met 3 testgevallen. (Vul de <code class="docutils literal notranslate"><span class="pre">???</span></code> in de cel in.)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+elm repl
+
+min : ???
+min x y = ???
+
+min 2 4
+???
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>maak een expressie met behulp van <code class="docutils literal notranslate"><span class="pre">map</span></code> om uit een lijst getallen de lijst met voorafgaande getallen te maken, bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">[1,2,3]</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">0,1,2</span></code>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+elm repl
+
+import List
+
+...
+
+List.map ...
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>de operator “+” kun je als functie gebruiken door deze tussen haakjes te schrijven: <code class="docutils literal notranslate"><span class="pre">(+)</span> <span class="pre">a</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code>. Gebruik dit om de functie <code class="docutils literal notranslate"><span class="pre">succ</span></code> te definiëren die voor de parameter het volgende getal geeft (succ 3 = 4). Kun je <code class="docutils literal notranslate"><span class="pre">succ</span></code> definiëren zonder parameters links van de <code class="docutils literal notranslate"><span class="pre">=</span></code>? (<em>Opmerking</em>: bovenstaande regel voor <code class="docutils literal notranslate"><span class="pre">(+)</span></code> kun je voor elke operator gebruiken, dus bijvoorbeeld ook voor <code class="docutils literal notranslate"><span class="pre">(::)</span></code>.)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+elm repl
+
+succ : ???
+succ = ??? met ...(+)...
+
+succ 3
+succ (succ 3)
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>ga na wat het effect is van <code class="docutils literal notranslate"><span class="pre">foldr</span> <span class="pre">(::)</span> <span class="pre">[]</span> <span class="pre">[1,2,3,4]</span></code>. Verklaar dit met de specificatie van <code class="docutils literal notranslate"><span class="pre">foldr</span></code>: <code class="docutils literal notranslate"><span class="pre">foldr</span> <span class="pre">f</span> <span class="pre">e</span> <span class="pre">[a,b,...,z]</span></code> = <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">f'</span> <span class="pre">(b</span> <span class="pre">f'</span> <span class="pre">...</span> <span class="pre">(z</span> <span class="pre">f'</span> <span class="pre">e))</span></code> waarin <code class="docutils literal notranslate"><span class="pre">f'</span></code> de infix-versie is van de functie <code class="docutils literal notranslate"><span class="pre">f</span></code> (ofwel: <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">a</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">f'</span> <span class="pre">b</span></code>.)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+elm repl
+
+import List exposing (..)
+
+foldr ...
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>ga na wat het effect is van <code class="docutils literal notranslate"><span class="pre">foldl</span> <span class="pre">(::)</span> <span class="pre">[]</span> <span class="pre">[1,2,3,4]</span></code>. Verklaar dit met de specificatie van <code class="docutils literal notranslate"><span class="pre">foldl</span></code>: <code class="docutils literal notranslate"><span class="pre">foldl</span> <span class="pre">f</span> <span class="pre">e</span> <span class="pre">[a,b,...,z]</span></code> = <code class="docutils literal notranslate"><span class="pre">(((e</span> <span class="pre">f'</span> <span class="pre">a)</span> <span class="pre">f'</span> <span class="pre">b)...)</span> <span class="pre">f'</span> <span class="pre">z</span></code> waarin <code class="docutils literal notranslate"><span class="pre">f'</span></code> de <em>omgekeerde</em> infix-versie is van de functie <code class="docutils literal notranslate"><span class="pre">f</span></code> (ofwel: <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">a</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">b</span> <span class="pre">f'</span> <span class="pre">a</span></code>.)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+elm repl
+
+import List exposing (..)
+
+foldl ...
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="bomen.html" title="previous page">Bomen</a>
+    <a class='right-next' id="next-link" href="inleiding-jupyter.html" title="next page">Inleiding Jupyter Notebooks</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Eelco Dijkstra<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
