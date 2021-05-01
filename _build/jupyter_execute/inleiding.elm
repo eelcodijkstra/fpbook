@@ -1,48 +1,3 @@
-# Inleiding
-
-## Functioneel programmeren
-
-Stijl van programmeren waarin *functies* centraal staan
-
-* functie-definitie
-* functie-aanroep
-* functie-waarden
-    * als resultaat
-    * als parameter
-    * als samenstelling van functies 
-    
-Functionele stijl kun je in veel talen toepassen. 
-
-## Elm - als functionele taal
-
-* "puur functioneel": geen variabelen, toekenning
-* "statische typering" - vgl. ook Pascal, Java, Rust, enz.
-* "gecompileerde taal" - i.t.t. Python, JavaScript
-
-Elm is bedoeld voor uitvoering in de browser, als alternatief voor JavaScript.
-
-## Elm in de browser
-
-HTML - voorbeeld:
-
-```html
-<div style="color: red;">
-  <h3 style="color: blue;"> Kopje </h3>
-  <p> Tekst tekst tekst </p>
-</div> 
-```
-
-Elm - voorbeeld:
-
-```elm
-  div [style "color" "red"]
-    [ h3 [style "color" "blue"] [ text "Kopje"]
-    , p  []  [ text "Tekst tekst tekst" ]
-    ] 
-```
-* `div`,`h3`, `p`, `text`, `style` zijn *functies*
-* met een attributen-lijst en een elementen-lijst
-
 import Html exposing (div, h3, p, text)
 import Html.Attributes exposing (style)
 
@@ -53,24 +8,6 @@ main =
     ] 
 
 -- compile-code
-
-Compleet Elm-programma
-
-* `import` geeft gebruikte *packages* aan
-* `-- compile-code` alleen voor Jupyter Notebook
-* uitvoeren in Notebook: 
-    * selecteer cel
-    * Shift-Return (of "run"-pijltje bovenin)
-
-Andere omgevingen voor uitvoeren van Elm:
-
-* https://elm-lang.org/try (web, online)
-* https://ellie-app.com (web, online)
-* elm-repl
-    * in Terminal `elm repl`
-
-## Benutten van functies
-
 
 import Html exposing (div, ul, li, text)
 import Html.Attributes exposing (style)
@@ -86,34 +23,3 @@ main =
   ]
   
 -- compile-code
-
-
-```{toctree}
-:hidden:
-:titlesonly:
-:caption: Functies en lijsten
-
-functies-1
-lijsten-1
-lijsten-2
-functies-2
-```
-
-
-```{toctree}
-:hidden:
-:titlesonly:
-:caption: Bomen
-
-bomen
-```
-
-
-```{toctree}
-:hidden:
-:titlesonly:
-:caption: Appendix
-
-elm-repl
-inleiding-jupyter
-```

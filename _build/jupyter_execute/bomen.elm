@@ -1,10 +1,3 @@
-# Bomen
-
-* boom als recursieve datastructuur
-* noteren van een samengestelde boom
-* afdrukken van een boom op verschillende manieren
-* lukt het ook om een boom te tekenen?
-
 import Html exposing (text)
 import String exposing (fromInt)
 
@@ -18,15 +11,6 @@ main =
   
 -- compile-code
 
-## Custom types
-
-Soms moet je in één type een aantal alternatieven combineren, waarbij je aan de hand van een "tag" weet met welk alternatief je te maken hebt.
-In Elm gebruik je daarvoor *Custom types*. Een algemene term hiervoor is "discriminated union": een vereniging van alternatieven waarbij je deze alternatieven kunt onderscheiden ("discimineren").
-
-> Je kunt dit vergelijken met de elementen in HTML of SVG: met behulp van tags zoals "h1", "div", of "ul" onderschied je de verschillende soorten elementen.
-
-Beschouw het volgende voorbeeld: een grafisch element is een rechthoek (met beginpunt (x, y), breedte en hoogt) of een cirkel (met beginpunt (x, y) en straal).
-
 import Svg exposing (..)
 import Svg.Attributes exposing (..)
 import String exposing (..)
@@ -37,8 +21,6 @@ type Element
   
 recta = Rect 10 10 300 50
 circleb = Circle 50 50 25
-
-In een functie voor het verwerken van een grafische element (bijvoorbeeld voor het tekenen daarvan) onderscheid je de verschillende alternatieven met behulp van de `case`-constructie:
 
 drawElement elt =
   case elt of
@@ -75,11 +57,6 @@ main =
     ]
  
 -- compile-code
-
-Opmerking: dit voorbeeld lijkt wat gekunsteld: je maakt je eigen grafische elementen, terwijl je die al als SVG-elementen tot je beschikking hebt. Het is zelfs nog erger: de functies in de Elm-library zijn gebaseerd op SVG-elementen die als data-elementen gedefinieerd zijn, te vergelijken met de HTML-elementen.
-
-
-Een volgende stap is dat we grafische elementen kunnen groeperen; dit combineren we met translatie, rotatie en schaling.
 
 import Svg exposing (..)
 import Svg.Attributes exposing (..)
@@ -185,33 +162,12 @@ main =
  
 -- compile-code
 
-Met het "group" element hebben we een recursieve structuur gemaakt. (Net als in HTML of in SVG.)
-(Dit geldt overigens ook voor Translate enz.) Dit betekent dat de `drawElement` functie ook recursief is/moet zijn.
-
-**Alternatief** 
-
-* geef de Translate functie een lijst van elementen mee.
-* introduceer ook de lijn als primitief element
-* een driehoek is een mooi voorbeeld van een groep.
-    * een driehoek is geen primitief element - maar dat kunnen we er wel van maken
-    * ander voorbeeld: huisje
-* we hebben hierboven de transformaties gedefinieerd in het datatype. We kunnen deze ook als functies definiëren die de attributen veranderen. Dat vereenvoudigt de `drawElement` functie. (Maar, waar laten we de kleur? Daarvoor hebben we nu in de data geen plaats... in tegenstelling tot in het SVG-type....) 
-* Mogelijk kunnen we de "group" daarvoor gebruiken, om andere attributen voor de groep te zetten. Dan kun je ook nog altijd een context voor een enkel element zetten...)
-* Als we de group gebruiken voor het zetten van attributen, dan kunnen we ook de translate e.d. via die attributen laten verlopen.
-* svg-elementen kunnen recursief zijn (in tegenstelling tot HTML)...
-
-**Voorkennis** We gebruiken hier de `List.map` functie. Deze moeten we hiervoor behandelen.
-
-
-
 import Html exposing (..)
 import String exposing (..)
 
 type Tree 
   = Node String Tree Tree
   | Nil
-
-Enkele voorbeelden:
 
 a = Node "aap" (Node "noot" Nil Nil) (Node "mies" Nil Nil)
 b = Node "vuur" a Nil
@@ -234,17 +190,6 @@ postfix tree =
 main =
   text ("OK" ++ postfix b)
 -- compile-code
-
-functie voor het afdrukken van een boom, in prefix:
-
-Tekenen van een boom.
-
-Hier komt wat meer bij kijken: we moeten met het inspringen (positie) van de bovenste knoop rekening houden met de breedte van de boom eronder.
-
-We gebruiken een proces in twee stappen: we zetten de boom om in een andere boom die we afbeelden op SVG(?)
-
-
-
 
 import Svg exposing (..)
 import Svg.Attributes exposing (..)
@@ -280,28 +225,6 @@ main =
     ]
     
 -- compile-code
-
-## Andere voorbeelden
-
-* expressie-boom; afdrukken op verschillende manieren; "vertalen", bijv. voor een eenvoudige register-taal?; uitrekenen.
-* DOM als boom; HTML-bomen
-* 
-
-## Belangrijke lessen
-
-* de structuur van de verwerking volgt de structuur van de data
-    * dit kunnen we straks ook voor lijsten doen
-* case-analysis moet compleet zijn: de Elm-compiler bewaakt dat?
-
-
-## Volgende stap(pen)
-
-* het gebruik van functies om te tekenen; functie als abstractie-mechanisme, met de mogelijkheid om te rekenen: veel compactere notatie dan de pure data-notatie.
-* welke volgorde gebruiken we bij group voor de attributen en de elementen: dat bepaalt welke partiële parametrisatie we kunnen gebruiken.
-
-## Tekenen van een boom
-
-* tekenen van een boom, uitgaande van een datastructuur
 
 import Svg exposing (..)
 import Svg.Attributes exposing (..)
@@ -387,56 +310,25 @@ drawTree t =
       Svg.text_ [] [text "."]
       
 
-tree0 = Nil
-tree1 = Node "hi" Nil Nil
-tree2 = Node "Hoi" tree1 tree1
-tree3 = Node "moi" tree2 tree2
-tree4 = Node "goeie" (tree3)  (Node "hi" (Nil) (Node "???" tree1 Nil) )
-
-test x =
-  Svg.g
-   []
-   [ translate (10, 10) [drawTree tree4]
-   ]
+drie = Node "3" Nil Nil
+vier = Node "4" Nil Nil
+vijf = Node "5" Nil Nil
+tree345 = Node "+" drie  (Node "*" vier vijf )
 
 main =
   svg
-    [ width "800"
-    , height "400"
-    , viewBox "0 0 800 400"
---    , stroke "black"
---    , strokeWidth "0.5"
---    , fill "None"
+    [ width "600"
+    , height "300"
+    , viewBox "0 0 600 300"
     ]
-    [ test 1
+    [ translate (20, 50) [drawTree tree345]
     ]
     
 -- compile-code
 
-## Opmerkingen
+**Opdracht**
 
-* je kunt kennelijk niet de onderdelen van een Node opvragen? Bijvoorbeeld als je de attributen van een Node achteraf wilt wijzigen. Anders gezedgd: een nieuwe Node met gewijzigde attributen wilt opleveren.
-
-```
-     transform="rotate(-10 50 100)
-                translate(-36 45.5)
-                skewX(40)
-                scale(1 0.5)">
-```                
-
-* kennelijk heeft het globale "stroke"-attribuut gevolgen voor de dikte van de letters. Kunnen we dat omzeilen, want ik wil dit wel graag globaal houden.
-
-* het is denk ik mooier om de boom symmetrisch te tekenen. We moeten dan voor de breedte het maximum van de beide subbomen gebruiken.
-
-    * als we de boom niet symmetrisch tekenen, moeten we rekening houden met de positie van het label aan de top: dat hoeft dan immers niet in het midden te staan...
-    * het symmetrisch tekenen levert een minder fraai resultaat als de eigenlijke boom niet symmetrisch is, vooral als 1 subboom duidelijk breder is dan de rest.
-    
-* een mogelijkheid (nog verder uitzoeken/uitwerken): twidth levert de breedte van de beide subbomen, en daarmee ook een positie voor het midden van de volledige boom.
-
-* SVG heeft geen "leeg" element (anders dan bijv. een lege groep). We zouden anders het tekenen van een boom kunnen vereenvoudigen?
-* maar, we moeten dan niet alleen de boom niet tekenen, maar ook de verbinding naar de boom niet....
-
-* dit is een oplossing voor een (max.) binaire boom; een volgende stap is het generaliseren naar een n-aire boom; dat hebben we bijv. nodig voor taalstructuren.
+* 
 
 
 
@@ -651,4 +543,5 @@ main =
     ]
     
 -- compile-code
+
 

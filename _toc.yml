@@ -6,6 +6,7 @@
 
 - part: Functies en lijsten
   chapters:
+    - file: functies-0
     - file: functies-1
     - file: lijsten-1
     - file: lijsten-2
